@@ -16,6 +16,8 @@ SRC, OUT, ASSETS = ROOT / "src", ROOT / "docs", ROOT / "assets"
 HOST = "https://werkzeuge.nordabenteuer.de"
 MAIN = "https://www.nordabenteuer.de"
 TODAY = datetime.date.today().isoformat()
+import hashlib
+CSSV = hashlib.md5((ROOT / "assets" / "nab.css").read_bytes()).hexdigest()[:8]  # Cache-Busting
 
 TOOLS = [
     dict(slug="inserat-auf-deutsch", src="inserat-auf-deutsch.html", color="a",
@@ -69,7 +71,7 @@ def head(title, desc, path, extra=""):
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#FFF6E6">
 {FONTS}
-<link rel="stylesheet" href="/assets/nab.css">
+<link rel="stylesheet" href="/assets/nab.css?v={CSSV}">
 {extra}
 </head>
 <body>"""
