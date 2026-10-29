@@ -1,0 +1,222 @@
+<title>Behörden-Reihenfolge Schweden</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: Steuerleiste oben, darunter eine senkrechte Kette von Schritten in einer Lesespalte. */
+:root{
+  --paper:#f2f0ec; --ink:#1d2328; --ink-soft:#5c666e; --rule:#d8d4cd;
+  --card:#ffffff; --accent:#8c3b2e; --accent-soft:#f0e2de; --flag:#8a6a1f; --flag-soft:#f3ebd6;
+  --font-display:"Newsreader",Georgia,serif; --font-ui:"IBM Plex Sans",system-ui,sans-serif; --font-data:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#15191c;--ink:#e7e4df;--ink-soft:#9aa3ab;--rule:#2c3338;--card:#1c2126;--accent:#d9816f;--accent-soft:#33211d;--flag:#d9b45e;--flag-soft:#2e2718;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#15191c;--ink:#e7e4df;--ink-soft:#9aa3ab;--rule:#2c3338;--card:#1c2126;--accent:#d9816f;--accent-soft:#33211d;--flag:#d9b45e;--flag-soft:#2e2718;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-ui);line-height:1.55;margin:0}
+.wrap{max-width:780px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:clamp(28px,5vw,56px)}
+header{border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:22px}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.1;margin:0 0 .4em;text-wrap:balance;letter-spacing:-.01em}
+.lede{margin:0;max-width:62ch;color:var(--ink-soft);font-size:1.02rem}
+.controls{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:16px;margin-bottom:22px;display:grid;gap:15px}
+.eyebrow{display:block;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:.55em}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 8rem;font-family:var(--font-ui);font-size:.83rem;padding:.55em .5em;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:2px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:600}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+ol.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+ol.steps>li{counter-increment:s;position:relative;padding:0 0 20px 46px}
+ol.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--font-data);font-size:.85rem;font-weight:500}
+ol.steps>li::after{content:"";position:absolute;left:14.5px;top:32px;bottom:4px;width:1px;background:var(--rule)}
+ol.steps>li:last-child::after{display:none}
+ol.steps h2{font-family:var(--font-display);font-weight:600;font-size:1.14rem;margin:.1em 0 .25em;letter-spacing:-.01em}
+ol.steps p{margin:0 0 .5em;font-size:.93rem}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:.4em}
+.chip{font-family:var(--font-data);font-size:.71rem;letter-spacing:.02em;padding:.25em .55em;border-radius:2px;background:var(--paper);border:1px solid var(--rule);color:var(--ink-soft);white-space:nowrap}
+.chip.need{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.more{font-size:.86rem}
+.more a{color:var(--accent)}
+.flag{background:var(--flag-soft);border-left:3px solid var(--flag);padding:11px 13px;border-radius:2px;font-size:.87rem;margin-bottom:20px}
+.cta{background:var(--accent-soft);border:1px solid var(--accent);border-radius:3px;padding:17px;margin-top:10px}
+.cta p{margin:0 0 .55em;font-size:.93rem}.cta p:last-child{margin-bottom:0}
+.cta a{color:var(--accent);font-weight:600}
+footer{margin-top:30px;padding-top:18px;border-top:1px solid var(--rule);font-size:.8rem;color:var(--ink-soft)}
+footer a{color:inherit}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Behörden-Reihenfolge Schweden</h1>
+  <p class="lede">Die Frage, die am Anfang alle haben: Womit fange ich an? Die Schritte hängen voneinander ab — ohne Personnummer kein Bankkonto, ohne Bankkonto kein BankID, ohne BankID fast gar nichts. Wähle deine Lage, und die Kette ordnet sich.</p>
+</header>
+
+<div class="controls">
+  <div>
+    <span class="eyebrow">Wie lange bleibst du?</span>
+    <div class="seg" id="dauer" role="group" aria-label="Aufenthaltsdauer">
+      <button type="button" data-v="lang" aria-pressed="true">Länger als ein Jahr</button>
+      <button type="button" data-v="kurz" aria-pressed="false">Kürzer als ein Jahr</button>
+    </div>
+  </div>
+  <div>
+    <span class="eyebrow">Womit verdienst du dein Geld?</span>
+    <div class="seg" id="status" role="group" aria-label="Status">
+      <button type="button" data-v="anstellung" aria-pressed="true">Anstellung</button>
+      <button type="button" data-v="selbst" aria-pressed="false">Selbständig</button>
+      <button type="button" data-v="studium" aria-pressed="false">Studium</button>
+      <button type="button" data-v="familie" aria-pressed="false">Mitziehend</button>
+    </div>
+  </div>
+  <div>
+    <span class="eyebrow">Kinder dabei?</span>
+    <div class="seg" id="kinder" role="group" aria-label="Kinder">
+      <button type="button" data-v="nein" aria-pressed="true">Nein</button>
+      <button type="button" data-v="ja" aria-pressed="false">Ja</button>
+    </div>
+  </div>
+</div>
+
+<div class="flag" id="flag"></div>
+<ol class="steps" id="steps"></ol>
+
+<section class="cta">
+  <p>Diese Kette beantwortet die Reihenfolge. Was sie nicht beantwortet, ist deine konkrete Lage — welcher Nachweis bei deinem Arbeitsvertrag reicht, was bei einem Umzug mitten im Steuerjahr passiert, wie es mit einer Wohnung ohne Erstvertrag weitergeht.</p>
+  <p>Dafür gibt es ein <a href="https://www.nordabenteuer.de/beratung">kostenloses Erstgespräch, 15 Minuten</a>. Wenn es danach konkret wird, 50 € die Stunde.</p>
+</section>
+
+<footer>Reihenfolge und Voraussetzungen nach den Angaben von Skatteverket, Försäkringskassan und Migrationsverket, Stand Oktober 2026. Behördenpraxis ändert sich — im Zweifel beim zuständigen Amt nachfragen. Mehr im <a href="https://www.nordabenteuer.de/ratgeber/behoerden-fahrplan-schweden">Behörden-Fahrplan</a>.</footer>
+</div>
+
+<script>
+var R = 'https://www.nordabenteuer.de/ratgeber/';
+
+function build(d, s, k){
+  var lang = d === 'lang';
+  var steps = [];
+
+  steps.push({
+    h: 'Wohnadresse klären',
+    needs: [],
+    when: 'vor allem anderen',
+    p: lang
+      ? 'Für die Registrierung bei Skatteverket brauchst du eine Adresse, an der du wohnst — Mietvertrag oder Kaufnachweis. Airbnb reicht nicht. Das ist der Punkt, an dem die meisten Zeitpläne kippen, weil die Wohnungssuche in Göteborg länger dauert als gedacht.'
+      : 'Auch ohne Folkbokföring brauchst du eine Postanschrift, an der dich Behörden und Bank erreichen. Kläre früh, wer deine Post entgegennimmt.',
+    links: [['wohnung-goeteborg','Wohnung in Göteborg finden'],['hyresratt-bostadsratt-andrahand','Erst-, Zweit- und Untermietvertrag']]
+  });
+
+  if(s === 'anstellung'){
+    steps.push({h:'Arbeitsvertrag in der Hand', needs:[], when:'vor Skatteverket',
+      p:'Als EU-Bürger hast du Aufenthaltsrecht, sobald du arbeitest. Skatteverket will beim Termin sehen, wovon du lebst — Arbeitsvertrag oder Anstellungsbescheinigung. Bring das Original mit, nicht nur eine Mail.', links:[]});
+  } else if(s === 'selbst'){
+    steps.push({h:'Gewerbe anmelden: F-skatt', needs:[], when:'früh, läuft parallel',
+      p:'Selbständige weisen ihr Aufenthaltsrecht über die eigene Tätigkeit nach. Die Anmeldung zur F-skatt bei Skatteverket und, wenn nötig, die Registrierung der Firma bei Bolagsverket laufen parallel zur Anmeldung als Person — beides dauert Wochen, nicht Tage.', links:[]});
+  } else if(s === 'studium'){
+    steps.push({h:'Studienplatz und Krankenversicherung', needs:[], when:'vor Skatteverket',
+      p:'Für Studierende ist der Zulassungsbescheid der Nachweis. Dazu musst du belegen, dass du krankenversichert bist und dich selbst versorgen kannst. Die EHIC deckt den Anfang ab, ersetzt aber keine Mitgliedschaft im schwedischen System.',
+      links:[['krankenversicherung-schweden-deutsche','Krankenversicherung in Schweden']]});
+  } else {
+    steps.push({h:'Aufenthaltsrecht über die Familie', needs:[], when:'vor Skatteverket',
+      p:'Wer mitzieht, leitet das Aufenthaltsrecht von der Person ab, die arbeitet oder studiert. Skatteverket will den Nachweis über diese Person sehen und die Verbindung zu ihr — Heiratsurkunde, Geburtsurkunde, Partnerschaftsnachweis, am besten übersetzt.', links:[]});
+  }
+
+  if(lang){
+    steps.push({h:'Skatteverket: Folkbokföring und Personnummer', needs:['Adresse','Nachweis'], when:'der eigentliche Startschuss',
+      p:'Persönlich im Servicekontor, mit Pass, Adressnachweis und dem Nachweis zu deiner Tätigkeit. Daraus folgt die Personnummer. Rechne mit mehreren Wochen Bearbeitungszeit, in denen fast nichts weitergeht — plane sie ein, statt sie abzuwarten.',
+      links:[['personnummer-schweden-beantragen','Personnummer beantragen']]});
+    steps.push({h:'ID-kort bei Skatteverket', needs:['Personnummer'], when:'sofort danach beantragen',
+      p:'Die Personnummer ist eine Zahl, kein Ausweis. Für Bank, Apotheke und vieles andere brauchst du das schwedische ID-kort. Es kostet eine Gebühr, die du vorher überweisen musst, und es gibt dafür eigene Termine — der Engpass, den fast alle unterschätzen.',
+      links:[['id-kort-schweden-beantragen','ID-kort beantragen']]});
+  } else {
+    steps.push({h:'Skatteverket: Samordningsnummer', needs:['Nachweis'], when:'der Startschuss',
+      p:'Unter einem Jahr wirst du nicht folkbokförd. Stattdessen gibt es ein Samordningsnummer — eine Kennnummer, mit der Behörden und Arbeitgeber dich führen können. Sie öffnet weniger Türen als eine Personnummer: Bankkonto und BankID sind damit schwerer bis gar nicht zu bekommen.',
+      links:[['samordningsnummer-vs-personnummer','Samordningsnummer und Personnummer']]});
+  }
+
+  steps.push({h:'Bankkonto eröffnen', needs: lang ? ['Personnummer','ID-kort'] : ['Samordningsnummer'], when:'sobald der Ausweis da ist',
+    p: lang
+      ? 'Mit Personnummer und ID-kort persönlich in der Filiale. Banken prüfen inzwischen genau, woher dein Geld kommt — bring Arbeitsvertrag und Gehaltsnachweise mit. Ein Konto zu bekommen ist dein Recht, ein bestimmtes Paket nicht.'
+      : 'Ohne Folkbokföring ist das der schwierigste Schritt. Manche Banken eröffnen ein Konto mit Samordningsnummer und Arbeitsvertrag, andere nicht. Frag vorher bei mehreren, statt dich auf eine zu verlassen.',
+    links:[['bankkonto-schweden-eroeffnen-deutsche','Bankkonto in Schweden eröffnen']]});
+
+  steps.push({h:'BankID einrichten', needs:['Bankkonto'], when:'am selben Tag',
+    p:'BankID ist der Generalschlüssel: Behörden, Versicherungen, Arzttermine, Mietportale, Stromanbieter. Ohne BankID bist du in Schweden digital nicht vorhanden. Richte es ein, sobald das Konto steht.',
+    links:[['bankid-schweden-einrichten-deutsche','BankID einrichten']]});
+
+  steps.push({h:'Digitale Brevlåda: Kivra', needs:['BankID'], when:'direkt nach BankID',
+    p:'Behördenpost kommt in Schweden digital. Wer keinen digitalen Briefkasten hat, wartet auf Briefe, die nie kommen — und verpasst Fristen, von denen er nichts wusste.',
+    links:[['kivra-digitaler-briefkasten-schweden','Kivra und die digitale Behördenpost']]});
+
+  if(lang){
+    steps.push({h:'Försäkringskassan anmelden', needs:['Personnummer'], when:'parallel möglich',
+      p:'Die Sozialversicherung läuft nicht automatisch mit der Personnummer an. Du meldest dich selbst an — davon hängen Elterngeld, Krankengeld und die Zuordnung zum schwedischen System ab. Je nach Lage kann auch eine A1-Bescheinigung aus Deutschland nötig sein.',
+      links:[['krankenversicherung-schweden-deutsche','Krankenversicherung und Försäkringskassan']]});
+  }
+
+  if(k === 'ja'){
+    steps.push({h:'Förskola oder Schule anmelden', needs: lang ? ['Personnummer'] : [], when:'so früh wie möglich',
+      p:'Die Anmeldung läuft über die Kommun und hat eigene Vorlaufzeiten — in Göteborg üblicherweise mehrere Monate für einen Förskola-Platz. Die Gebühr richtet sich nach dem Haushaltseinkommen und ist gedeckelt.',
+      links:[['mit-kindern-nach-goeteborg-auswandern','Mit Kindern nach Göteborg']]});
+  }
+
+  steps.push({h:'Deutschland abmelden', needs:[], when:'nicht vergessen',
+    p: lang
+      ? 'Die Abmeldung in Deutschland gehört zur Anmeldung in Schweden. Wer beides schleifen lässt, ist irgendwann in zwei Ländern steuerlich gemeldet — und erklärt das später rückwirkend.'
+      : 'Unter einem Jahr bleibst du in der Regel in Deutschland gemeldet. Prüfe trotzdem, wo du steuerpflichtig bist: Das hängt an Tagen und Lebensmittelpunkt, nicht an der Meldebescheinigung.',
+    links:[['abmeldung-deutschland-umzug-schweden','Abmeldung aus Deutschland']]});
+
+  steps.push({h:'Swish und der Alltag', needs:['BankID'], when:'zum Schluss, aber bald',
+    p:'Swish ist in Schweden kein Komfort, sondern die normale Art, Geld zwischen Privatleuten zu bewegen — Flohmarkt, Vereinsbeitrag, die Hälfte vom Essen. Danach fehlt eigentlich nur noch die Post-Vollmacht für den Urlaub.',
+    links:[['swish-schweden-einrichten-deutsche','Swish einrichten'],['mottagningsbevis-postfullmakt-schweden','Post im Urlaub regeln']]});
+
+  return steps;
+}
+
+function flagFor(d, s){
+  if(d !== 'lang') return 'Unter einem Jahr ist der entscheidende Unterschied: <strong>kein Folkbokföring, keine Personnummer</strong>. Vieles, was in Ratgebern selbstverständlich klingt, funktioniert mit einem Samordningsnummer nur eingeschränkt — allen voran Bankkonto und BankID. Plane das ein, bevor du fliegst.';
+  if(s === 'selbst') return 'Als Selbständiger weist du dein Aufenthaltsrecht über die eigene Tätigkeit nach. <strong>Rechne mit längeren Bearbeitungszeiten</strong> als bei einer Anstellung — F-skatt und Personnummer laufen parallel, und die Bank fragt genauer nach, woher dein Einkommen kommt.';
+  return 'Als EU-Bürger musst du dich <strong>nicht bei Migrationsverket registrieren</strong>. Diese Pflicht wurde 2014 abgeschafft, steht aber noch in vielen deutschen Ratgebern und Foren. Wer dort anfängt, verliert Wochen an der falschen Behörde.';
+}
+
+var state = {dauer:'lang', status:'anstellung', kinder:'nein'};
+
+function render(){
+  var steps = build(state.dauer, state.status, state.kinder);
+  document.getElementById('flag').innerHTML = flagFor(state.dauer, state.status);
+  var ol = document.getElementById('steps');
+  ol.innerHTML = '';
+  steps.forEach(function(st){
+    var li = document.createElement('li');
+    var meta = document.createElement('div'); meta.className = 'meta';
+    var when = document.createElement('span'); when.className = 'chip'; when.textContent = st.when;
+    meta.append(when);
+    st.needs.forEach(function(n){
+      var c = document.createElement('span'); c.className = 'chip need'; c.textContent = 'braucht ' + n; meta.append(c);
+    });
+    var h = document.createElement('h2'); h.textContent = st.h;
+    var p = document.createElement('p'); p.textContent = st.p;
+    li.append(h, meta, p);
+    if(st.links.length){
+      var m = document.createElement('p'); m.className = 'more';
+      st.links.forEach(function(l, i){
+        if(i) m.append(document.createTextNode(' · '));
+        var a = document.createElement('a'); a.href = R + l[0]; a.textContent = l[1]; m.append(a);
+      });
+      li.append(m);
+    }
+    ol.append(li);
+  });
+}
+
+['dauer','status','kinder'].forEach(function(group){
+  Array.prototype.forEach.call(document.querySelectorAll('#' + group + ' button'), function(b){
+    b.addEventListener('click', function(){
+      state[group] = b.getAttribute('data-v');
+      Array.prototype.forEach.call(document.querySelectorAll('#' + group + ' button'), function(o){
+        o.setAttribute('aria-pressed', String(o === b));
+      });
+      render();
+    });
+  });
+});
+
+render();
+</script>

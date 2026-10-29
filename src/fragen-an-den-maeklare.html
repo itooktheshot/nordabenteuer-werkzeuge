@@ -1,0 +1,220 @@
+<title>Fragen an den Mäklare</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: schmale Steuerspalte oben, darunter die Liste in einer Lesespalte. Druckfreundlich. */
+:root{
+  --paper:#f2f0ec; --ink:#1d2328; --ink-soft:#5c666e; --rule:#d8d4cd;
+  --card:#ffffff; --accent:#8c3b2e; --accent-soft:#f0e2de; --flag:#8a6a1f; --flag-soft:#f3ebd6;
+  --font-display:"Newsreader",Georgia,serif; --font-ui:"IBM Plex Sans",system-ui,sans-serif; --font-data:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#15191c;--ink:#e7e4df;--ink-soft:#9aa3ab;--rule:#2c3338;--card:#1c2126;--accent:#d9816f;--accent-soft:#33211d;--flag:#d9b45e;--flag-soft:#2e2718;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#15191c;--ink:#e7e4df;--ink-soft:#9aa3ab;--rule:#2c3338;--card:#1c2126;--accent:#d9816f;--accent-soft:#33211d;--flag:#d9b45e;--flag-soft:#2e2718;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-ui);line-height:1.55;margin:0}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:clamp(28px,5vw,56px)}
+header{border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:22px}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.1;margin:0 0 .4em;text-wrap:balance;letter-spacing:-.01em}
+.lede{margin:0;max-width:62ch;color:var(--ink-soft);font-size:1.02rem}
+.controls{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:16px;margin-bottom:24px;display:grid;gap:14px}
+.eyebrow{display:block;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:.6em}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 8rem;font-family:var(--font-ui);font-size:.84rem;padding:.55em .5em;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:2px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:600}
+.seg button:focus-visible,.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.copy{font-family:var(--font-ui);font-size:.84rem;font-weight:500;padding:.55em 1em;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:2px;cursor:pointer;justify-self:start}
+.said{font-size:.8rem;color:var(--ink-soft);margin-left:.6em}
+section.grp{margin-bottom:26px}
+h2{font-family:var(--font-display);font-weight:600;font-size:1.22rem;margin:0 0 .15em;letter-spacing:-.01em}
+.why{margin:0 0 .9em;font-size:.86rem;color:var(--ink-soft)}
+ol.q{list-style:none;margin:0;padding:0;counter-reset:q}
+ol.q li{counter-increment:q;display:grid;grid-template-columns:2.1rem minmax(0,1fr);gap:4px 10px;padding:12px 0;border-bottom:1px solid var(--rule)}
+ol.q li:last-child{border-bottom:0}
+ol.q li::before{content:counter(q);font-family:var(--font-data);font-size:.82rem;color:var(--ink-soft);padding-top:.15em}
+ol.q .sv{font-weight:500;min-width:0}
+ol.q .de{grid-column:2;font-size:.88rem;color:var(--ink-soft);min-width:0}
+.flag{background:var(--flag-soft);border-left:3px solid var(--flag);padding:11px 13px;border-radius:2px;font-size:.87rem;margin-bottom:24px}
+.cta{background:var(--accent-soft);border:1px solid var(--accent);border-radius:3px;padding:17px;margin-top:8px}
+.cta p{margin:0 0 .55em;font-size:.93rem}.cta p:last-child{margin-bottom:0}
+.cta a{color:var(--accent);font-weight:600}
+footer{margin-top:30px;padding-top:18px;border-top:1px solid var(--rule);font-size:.8rem;color:var(--ink-soft)}
+footer a{color:inherit}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Fragen an den Mäklare</h1>
+  <p class="lede">Der Mäklare arbeitet für den Verkäufer, muss dich aber korrekt informieren — auf das, was du fragst. Diese Liste passt sich dem Objekttyp an. Zu jeder Frage steht der schwedische Wortlaut, damit du sie auch auf Schwedisch stellen kannst.</p>
+</header>
+
+<div class="controls">
+  <div>
+    <span class="eyebrow">Um was für ein Objekt geht es?</span>
+    <div class="seg" id="typ" role="group" aria-label="Objektart">
+      <button type="button" data-v="br" aria-pressed="true">Bostadsrätt</button>
+      <button type="button" data-v="villa" aria-pressed="false">Haus / Villa</button>
+      <button type="button" data-v="fritid" aria-pressed="false">Ferienhaus</button>
+    </div>
+  </div>
+  <div>
+    <button class="copy" id="copy" type="button">Liste kopieren</button>
+    <span class="said" id="said" role="status"></span>
+  </div>
+</div>
+
+<div class="flag" id="flag"></div>
+<div id="list"></div>
+
+<section class="cta">
+  <p><strong>Was diese Liste nicht kann:</strong> die Antworten einordnen. „Die Förening hat 18.000 kr Schulden pro Quadratmeter“ klingt nach einer Zahl und ist in Wahrheit eine Entscheidung.</p>
+  <p>Wenn du die Unterlagen hast und sie jemand lesen soll: <a href="https://www.nordabenteuer.de/beratung">Objektcheck, 149 €</a> — zwei Seiten auf Deutsch, in der Regel innerhalb von zwei Werktagen.</p>
+</section>
+
+<footer>Mehr im Ratgeber: <a href="https://www.nordabenteuer.de/ratgeber/koparens-undersokningsplikt-schweden">Undersökningsplikt</a> · <a href="https://www.nordabenteuer.de/ratgeber/bostadsrattsforening-pruefen">Die Förening prüfen</a> · <a href="https://www.nordabenteuer.de/ratgeber/budgivning-schweden-bieterverfahren">Budgivning</a>. Keine Rechtsberatung.</footer>
+</div>
+
+<script>
+var GROUPS = {
+  br: [
+    {h:'Die Förening', why:'Ihre Finanzen sind deine Finanzen. Das entscheidet über die nächsten zehn Jahre mehr als die Wohnung selbst.', q:[
+      ['Kan jag få föreningens senaste årsredovisning och stadgar?','Bekomme ich den letzten Jahresabschluss und die Satzung der Förening?'],
+      ['Hur stor är föreningens skuld per kvadratmeter?','Wie hoch ist die Schuld der Förening pro Quadratmeter?'],
+      ['När är föreningens lån bundna till, och till vilken ränta?','Bis wann laufen die Kredite der Förening, und zu welchem Zins?'],
+      ['Finns en underhållsplan, och vad står närmast på tur?','Gibt es einen Instandhaltungsplan, und was steht als Nächstes an?'],
+      ['Har avgiften höjts de senaste tre åren, och är en höjning beslutad?','Wurde die Avgift in den letzten drei Jahren erhöht, und ist eine Erhöhung beschlossen?'],
+      ['Är föreningen äkta eller oäkta?','Ist die Förening äkta oder oäkta? (Das hat steuerliche Folgen beim Verkauf.)'],
+      ['Äger föreningen marken, eller är det tomträtt?','Gehört der Förening das Grundstück, oder ist es Erbpacht?']
+    ]},
+    {h:'Die Wohnung', why:'Was im Inserat steht, ist die Verkaufsversion. Diese Fragen zielen auf das, was nicht drinsteht.', q:[
+      ['Vad ingår i avgiften — värme, vatten, bredband, kabel-tv?','Was ist in der Avgift enthalten — Heizung, Wasser, Internet, Kabelfernsehen?'],
+      ['Vilka renoveringar är gjorda, av vem, och finns kvitton?','Welche Renovierungen wurden gemacht, von wem, und gibt es Belege?'],
+      ['Är badrummet och köket fackmannamässigt renoverade?','Sind Bad und Küche fachgerecht renoviert worden?'],
+      ['Finns det någon känd fukt- eller ljudproblematik i huset?','Sind Feuchtigkeits- oder Lärmprobleme im Haus bekannt?'],
+      ['Vad är boarea och vad är biarea i den här lägenheten?','Was ist Wohnfläche und was Nebenfläche in dieser Wohnung?'],
+      ['Ingår förråd och eventuell parkering, eller köas det separat?','Sind Abstellraum und Stellplatz dabei, oder gibt es dafür eine eigene Warteliste?']
+    ]},
+    {h:'Kauf und Ablauf', why:'Hier entscheidet sich, ob du in der Bieterrunde ruhig bleiben kannst.', q:[
+      ['Hur många har anmält intresse, och har bud lagts?','Wie viele Interessenten gibt es, und wurden schon Gebote abgegeben?'],
+      ['Vilka villkor ställer föreningen för medlemskap?','Welche Bedingungen stellt die Förening für die Mitgliedschaft?'],
+      ['Vilka avgifter tar föreningen vid överlåtelse och pantsättning?','Welche Gebühren erhebt die Förening bei Übertragung und Verpfändung?'],
+      ['När är tillträde tänkt?','Wann ist die Übergabe vorgesehen?']
+    ]}
+  ],
+  villa: [
+    {h:'Bausubstanz', why:'Die Undersökningsplikt liegt bei dir: Was du hättest sehen können, geht später zu deinen Lasten.', q:[
+      ['Finns en överlåtelsebesiktning, och får jag läsa den?','Gibt es ein Übergabegutachten, und darf ich es lesen?'],
+      ['Vilken grundkonstruktion har huset — krypgrund, platta på mark eller källare?','Welche Gründung hat das Haus — Kriechkeller, Bodenplatte oder Keller?'],
+      ['Har det funnits fukt i grunden eller på vinden?','Gab es Feuchtigkeit im Fundament oder auf dem Dachboden?'],
+      ['När byttes taket senast, och vilket material?','Wann wurde das Dach zuletzt erneuert, und mit welchem Material?'],
+      ['När drogs elen om senast, och finns jordfelsbrytare?','Wann wurde die Elektrik zuletzt erneuert, und gibt es einen FI-Schutzschalter?'],
+      ['Vilka renoveringar är gjorda med bygglov, och finns slutbesked?','Welche Umbauten haben eine Baugenehmigung, und gibt es die Schlussabnahme?']
+    ]},
+    {h:'Technik und laufende Kosten', why:'Die Driftkostnad im Inserat ist der Verbrauch des Verkäufers, nicht deiner.', q:[
+      ['Hur värms huset upp, och vad kostade uppvärmningen förra året?','Wie wird geheizt, und was hat die Heizung letztes Jahr gekostet?'],
+      ['Är vatten och avlopp kommunalt eller enskilt?','Sind Wasser und Abwasser kommunal oder privat?'],
+      ['Om enskilt avlopp: när godkändes anläggningen senast av kommunen?','Bei eigener Kläranlage: wann wurde sie zuletzt von der Kommune abgenommen?'],
+      ['Om egen brunn: finns ett vattenprov, och hur gammalt är det?','Bei eigenem Brunnen: gibt es eine Wasseranalyse, und wie alt ist sie?'],
+      ['Vad står i energideklarationen?','Was steht im Energieausweis?'],
+      ['Ingår huset i en samfällighet, och vad kostar den?','Gehört das Haus zu einer Samfällighet, und was kostet sie?']
+    ]},
+    {h:'Grundstück und Recht', why:'Was am Grundstück hängt, zieht mit um.', q:[
+      ['Hur mycket pantbrev finns uttagna i fastigheten?','Wie viele Pantbrev sind auf dem Grundstück eingetragen?'],
+      ['Vad är taxeringsvärdet?','Wie hoch ist das Taxeringsvärde?'],
+      ['Finns servitut, ledningsrätter eller andra belastningar?','Gibt es Dienstbarkeiten, Leitungsrechte oder andere Lasten?'],
+      ['Berörs tomten av strandskydd?','Ist das Grundstück vom Uferschutz betroffen?'],
+      ['Finns detaljplan, och vad får byggas på granntomterna?','Gibt es einen Bebauungsplan, und was darf auf den Nachbargrundstücken gebaut werden?'],
+      ['När sotades och brandskyddskontrollerades eldstaden senast?','Wann wurden Feuerstätte und Schornstein zuletzt gekehrt und geprüft?']
+    ]}
+  ],
+  fritid: [
+    {h:'Nutzbarkeit übers Jahr', why:'Der Unterschied zwischen Sommerhaus und ganzjährig bewohnbar kostet schnell sechsstellig.', q:[
+      ['Är huset byggt för åretruntboende eller för sommarbruk?','Ist das Haus für ganzjähriges Wohnen gebaut oder für den Sommer?'],
+      ['Är vattnet avstängt vintertid, och är ledningarna frostsäkra?','Wird das Wasser im Winter abgestellt, und sind die Leitungen frostsicher?'],
+      ['Hur är huset isolerat, och vad kostar det att värma i februari?','Wie ist das Haus gedämmt, und was kostet Heizen im Februar?'],
+      ['Plogas vägen fram till huset vintertid, och vem betalar?','Wird der Weg zum Haus im Winter geräumt, und wer bezahlt das?']
+    ]},
+    {h:'Lage und Zugang', why:'Beim Ferienhaus ist der Weg dorthin Teil des Objekts.', q:[
+      ['Vem äger och underhåller vägen fram till fastigheten?','Wem gehört der Weg zum Grundstück, und wer unterhält ihn?'],
+      ['Finns vägsamfällighet, och vad är årsavgiften?','Gibt es eine Wegegemeinschaft, und wie hoch ist der Jahresbeitrag?'],
+      ['Berörs tomten av strandskydd, och vad får göras närmast vattnet?','Gilt Uferschutz, und was darf in Wassernähe gemacht werden?'],
+      ['Finns bryggrätt eller båtplats, och följer den med?','Gibt es Steg- oder Liegeplatzrechte, und gehen sie mit über?']
+    ]},
+    {h:'Technik und Recht', why:'Dieselben Fragen wie beim Haus, nur sind die Anlagen hier oft älter.', q:[
+      ['Är vatten och avlopp kommunalt eller enskilt?','Sind Wasser und Abwasser kommunal oder privat?'],
+      ['Om enskilt avlopp: när godkändes anläggningen senast?','Bei eigener Kläranlage: wann wurde sie zuletzt abgenommen?'],
+      ['Finns en överlåtelsebesiktning?','Gibt es ein Übergabegutachten?'],
+      ['Hur mycket pantbrev finns uttagna?','Wie viele Pantbrev sind eingetragen?'],
+      ['Får huset hyras ut, och finns begränsningar?','Darf das Haus vermietet werden, und gibt es Einschränkungen?']
+    ]}
+  ]
+};
+
+var FLAGS = {
+  br:'Die wichtigste Frage ist die erste: <strong>Årsredovisning und Stadgar</strong>. Beides muss der Mäklare herausgeben, beides ist öffentlich — und beides sagt mehr über die nächsten zehn Jahre als jede Besichtigung.',
+  villa:'Beim Haus gilt die <strong>Undersökningsplikt</strong>: Was du bei sorgfältiger Prüfung hättest entdecken können, kannst du später nicht mehr reklamieren. Eine eigene Besiktning kostet rund 9.600 bis 10.800 kr und ist die billigste Versicherung in diesem Kauf.',
+  fritid:'Beim Ferienhaus ist die teuerste Überraschung fast immer <strong>Abwasser</strong>. Eine nicht genehmigte Kläranlage muss ersetzt werden, und das kostet schnell mehr als die Küche.'
+};
+
+var state = 'br';
+
+function render(){
+  var list = document.getElementById('list');
+  list.innerHTML = '';
+  document.getElementById('flag').innerHTML = FLAGS[state];
+  GROUPS[state].forEach(function(g){
+    var sec = document.createElement('section'); sec.className = 'grp';
+    var h = document.createElement('h2'); h.textContent = g.h;
+    var w = document.createElement('p'); w.className = 'why'; w.textContent = g.why;
+    var ol = document.createElement('ol'); ol.className = 'q';
+    g.q.forEach(function(pair){
+      var li = document.createElement('li');
+      var sv = document.createElement('span'); sv.className = 'sv'; sv.textContent = pair[0];
+      var de = document.createElement('span'); de.className = 'de'; de.textContent = pair[1];
+      li.append(sv, de); ol.append(li);
+    });
+    sec.append(h, w, ol); list.append(sec);
+  });
+}
+
+function asText(){
+  var out = ['Fragen an den Mäklare — ' + document.querySelector('#typ button[aria-pressed=true]').textContent, ''];
+  GROUPS[state].forEach(function(g){
+    out.push(g.h.toUpperCase());
+    g.q.forEach(function(p, i){ out.push((i+1) + '. ' + p[0]); out.push('   ' + p[1]); });
+    out.push('');
+  });
+  out.push('nordabenteuer.de');
+  return out.join('\n');
+}
+
+Array.prototype.forEach.call(document.querySelectorAll('#typ button'), function(b){
+  b.addEventListener('click', function(){
+    state = b.getAttribute('data-v');
+    Array.prototype.forEach.call(document.querySelectorAll('#typ button'), function(o){
+      o.setAttribute('aria-pressed', String(o === b));
+    });
+    document.getElementById('said').textContent = '';
+    render();
+  });
+});
+
+document.getElementById('copy').addEventListener('click', function(){
+  var said = document.getElementById('said');
+  var text = asText();
+  function fallback(){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.append(ta); ta.select();
+    said.textContent = 'Markiert — jetzt mit Strg/Cmd + C kopieren.';
+    setTimeout(function(){ ta.remove(); }, 15000);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){
+      said.textContent = 'Kopiert.';
+    })['catch'](fallback);
+  } else { fallback(); }
+});
+
+render();
+</script>

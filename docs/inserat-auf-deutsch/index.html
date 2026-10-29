@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inserat auf Deutsch – Werkzeuge von nordabenteuer.de</title>
+<meta name="description" content="Schwedisches Immobilieninserat verstehen: Utgångspris, Avgift, Boarea, Driftkostnad auf Deutsch erklärt und die fehlenden Zahlen ausgerechnet. Läuft im Browser, nichts wird hochgeladen.">
+<link rel="canonical" href="https://werkzeuge.nordabenteuer.de/inserat-auf-deutsch/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="nordabenteuer.de">
+<meta property="og:title" content="Inserat auf Deutsch – Werkzeuge von nordabenteuer.de">
+<meta property="og:description" content="Schwedisches Immobilieninserat verstehen: Utgångspris, Avgift, Boarea, Driftkostnad auf Deutsch erklärt und die fehlenden Zahlen ausgerechnet. Läuft im Browser, nichts wird hochgeladen.">
+<meta property="og:url" content="https://werkzeuge.nordabenteuer.de/inserat-auf-deutsch/">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#FFF6E6">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/nab.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Inserat auf Deutsch", "url": "https://werkzeuge.nordabenteuer.de/inserat-auf-deutsch/", "description": "Schwedisches Immobilieninserat verstehen: Utgångspris, Avgift, Boarea, Driftkostnad auf Deutsch erklärt und die fehlenden Zahlen ausgerechnet. Läuft im Browser, nichts wird hochgeladen.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "inLanguage": "de", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "publisher": {"@type": "Organization", "name": "nordabenteuer.de", "url": "https://www.nordabenteuer.de/"}, "author": {"@type": "Person", "name": "Sebastian Schiefner"}}</script>
+</head>
+<body><div class="nab-head"><div class="in">
+  <a class="nab-mark" href="https://www.nordabenteuer.de/" aria-label="nordabenteuer.de">nordabenteuer<b>.</b> <small>Werkzeuge</small></a>
+  <nav class="nab-nav" aria-label="Seiten">
+    <a href="/">Alle Werkzeuge</a>
+    <a href="https://www.nordabenteuer.de/ratgeber">Ratgeber</a>
+    <a href="https://www.nordabenteuer.de/shop">Guides</a>
+    <a href="https://www.nordabenteuer.de/beratung">Beratung</a>
+  </nav>
+</div></div>
+<main>
+<style>
+/* Layout: zweispaltig ab 900px — Eingabe links, Entschlüsselung rechts; darunter Rechenwerte. Mobil gestapelt. */
+
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:clamp(28px,5vw,56px)}
+main header{border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:26px}
+main h1{font-family:var(--font-display);font-weight:800;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.1;margin:0 0 .4em;text-wrap:balance;letter-spacing:-.01em}
+.lede{margin:0;max-width:62ch;color:var(--ink-soft);font-size:1.02rem}
+.cols{display:grid;grid-template-columns:minmax(0,1fr);gap:26px}
+@media(min-width:900px){.cols{grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:34px;align-items:start}}
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:18px}
+label.lbl,.eyebrow{display:block;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:.6em}
+main textarea{width:100%;min-height:270px;resize:vertical;font-family:var(--font-data);font-size:.82rem;line-height:1.65;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:2px;padding:11px;min-width:0}
+main textarea:focus-visible,main button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
+main button{font-family:var(--font-ui);font-size:.86rem;font-weight:500;padding:.58em 1.05em;border-radius:2px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer}
+button.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.hint{font-size:.8rem;color:var(--ink-soft);margin:11px 0 0}
+.note{font-size:.78rem;color:var(--ink-soft);margin:14px 0 0;padding-top:12px;border-top:1px solid var(--rule)}
+main h2{font-family:var(--font-display);font-weight:600;font-size:1.3rem;margin:0 0 .65em;letter-spacing:-.01em}
+dl.fields{margin:0;display:grid;gap:0}
+dl.fields>div{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:13px 0;border-bottom:1px solid var(--rule)}
+@media(min-width:620px){dl.fields>div{grid-template-columns:minmax(0,15ch) minmax(0,auto) minmax(0,1fr);gap:4px 18px;align-items:baseline}}
+dl.fields dt{font-family:var(--font-data);font-size:.8rem;color:var(--ink-soft);min-width:0}
+dl.fields dd.val{margin:0;font-weight:600;font-variant-numeric:tabular-nums;min-width:0;white-space:nowrap}
+dl.fields dd.exp{margin:0;font-size:.88rem;color:var(--ink-soft);min-width:0}
+dl.fields>div:last-child{border-bottom:0}
+.calc{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.calc li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;justify-content:space-between;padding-bottom:11px;border-bottom:1px dotted var(--rule)}
+.calc li:last-child{border-bottom:0;padding-bottom:0}
+.calc .k{font-size:.9rem;min-width:0}
+.calc .v{font-family:var(--font-data);font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.flag{background:var(--flag-soft);border-left:3px solid var(--flag);padding:11px 13px;border-radius:2px;font-size:.88rem}
+.flags{display:grid;gap:9px;margin-top:4px}
+.stack{display:grid;gap:22px}
+.miss{font-size:.84rem;color:var(--ink-soft);font-family:var(--font-data)}
+.cta{background:var(--accent-soft);border:1px solid var(--accent);border-radius:3px;padding:17px}
+.cta p{margin:0 0 .55em;font-size:.93rem}
+.cta p:last-child{margin-bottom:0}
+.cta a{color:var(--accent);font-weight:600}
+.empty{color:var(--ink-soft);font-size:.92rem}
+main footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--rule);font-size:.8rem;color:var(--ink-soft)}
+.sample-tag{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;padding:.25em .6em;border-radius:2px;margin-left:.5em;vertical-align:middle}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Inserat auf Deutsch</h1>
+  <p class="lede">Markiere die Faktenliste eines schwedischen Immobilieninserats, kopiere sie und füge sie hier ein. Du bekommst jede Zeile auf Deutsch erklärt und die Zahlen ausgerechnet, die im Inserat nicht stehen. Nichts verlässt deinen Browser.</p>
+</header>
+
+<div class="cols">
+  <div class="panel">
+    <label class="lbl" for="src">Text aus dem Inserat<span class="sample-tag" id="tag">Beispiel</span></label>
+    <textarea id="src" spellcheck="false" aria-describedby="hint"></textarea>
+    <div class="row">
+      <button id="go" type="button">Übersetzen</button>
+      <button id="demo" class="ghost" type="button">Beispiel laden</button>
+      <button id="clear" class="ghost" type="button">Leeren</button>
+    </div>
+    <p class="hint" id="hint">Es genügt der Block mit Utgångspris, Avgift, Boarea und so weiter. Reihenfolge und Zeilenumbrüche sind egal.</p>
+    <p class="note">Die Seite rechnet im Browser. Es wird nichts hochgeladen, nichts gespeichert und keine fremde Seite abgerufen.</p>
+  </div>
+
+  <div class="stack">
+    <section class="panel">
+      <span class="eyebrow">Was im Inserat steht</span>
+      <div id="out"><p class="empty">Noch nichts eingefügt.</p></div>
+    </section>
+
+    <section class="panel" id="calcbox" hidden>
+      <span class="eyebrow">Was im Inserat nicht steht</span>
+      <ul class="calc" id="calc"></ul>
+    </section>
+
+    <section class="flags" id="flagbox" hidden></section>
+
+    <section class="cta">
+      <p><strong>Was diese Seite nicht kann:</strong> beurteilen, ob die Avgift für dieses Viertel hoch ist, in welchem Zustand die Förening steckt oder wo der Endpreis landen wird. Dafür braucht es Vergleichsobjekte und einen Blick in die årsredovisning.</p>
+      <p>Wenn du genau das brauchst: <a href="https://www.nordabenteuer.de/beratung">Objektcheck, 149 €</a> — zwei Seiten auf Deutsch, in der Regel innerhalb von zwei Werktagen.</p>
+    </section>
+  </div>
+</div>
+
+<footer>Begriffe und Erklärungen aus dem <a href="https://www.nordabenteuer.de/ratgeber/hemnet-immobilien-inserat-lesen-deutsche">Ratgeber von nordabenteuer.de</a>. Keine Rechts- oder Steuerberatung; Gebühren und Steuersätze ändern sich.</footer>
+</div>
+
+<script>
+const SAMPLE = `Bostadsrätt, Majorna, Göteborg
+Utgångspris 2 950 000 kr
+Avgift 4 212 kr/mån
+Driftkostnad 9 600 kr/år
+Boarea 68 m²
+Biarea 12 m²
+Antal rum 3 rum
+Våning 3 av 5, hiss finns
+Byggår 1952
+Upplåtelseform Bostadsrätt
+Förening Brf Sjöfarten
+Energiklass D
+Tillträde Enligt överenskommelse`;
+
+const FIELDS = [
+  {key:'utgangspris', label:'Utgångspris', de:'Ausgangspreis',
+   re:[/utg[åa]ngspris\s*[:\-]?\s*([\d\s\u00a0\u202f .,]+)\s*kr/i, /(?:^|\n)[ \t]*(?:beg[äa]rt\s+pris|accepterat\s+pris|pris)\s*[:\-]?\s*([\d\s\u00a0\u202f .,]+)\s*kr/i], kind:'kr',
+   exp:'Der Startpunkt der Bieterrunde, nicht der Preis. Was am Ende gezahlt wird, heißt Slutpris und steht erst nach dem Verkauf fest.'},
+  {key:'slutpris', label:'Slutpris', de:'Endpreis',
+   re:/slutpris\D{0,12}([\d\s  .,]+)\s*kr/i, kind:'kr',
+   exp:'Der tatsächlich gezahlte Preis. Nur bei bereits verkauften Objekten zu sehen.'},
+  {key:'avgift', label:'Avgift', de:'Monatsgebühr an die Förening',
+   re:/(?:m[åa]nads)?avgift\D{0,12}([\d\s  .,]+)\s*kr/i, kind:'kr',
+   exp:'Kein deutsches Hausgeld: Darin steckt dein Anteil an den Schulden der Genossenschaft. Niedrig kann gut gewirtschaftet heißen — oder Sanierung noch vor sich.'},
+  {key:'driftkostnad', label:'Driftkostnad', de:'Laufende Kosten',
+   re:/driftkostnad\D{0,12}([\d\s  .,]+)\s*kr/i, kind:'kr',
+   exp:'Heizung, Wasser, Strom, Versicherung — als Jahresbetrag und geschätzt auf den Verbrauch des Verkäufers, nicht auf deinen.'},
+  {key:'boarea', label:'Boarea', de:'Wohnfläche',
+   re:/bo(?:area|yta)\D{0,12}([\d\s  .,]+)\s*(?:m²|kvm|m2)/i, kind:'m2',
+   exp:'Die anrechenbare Wohnfläche. Der Quadratmeterpreis wird fast immer hierauf gerechnet.'},
+  {key:'biarea', label:'Biarea', de:'Nebenfläche',
+   re:/bi(?:area|yta)\D{0,12}([\d\s  .,]+)\s*(?:m²|kvm|m2)/i, kind:'m2',
+   exp:'Keller, Souterrain, Fläche unter der Dachschräge. In Deutschland würde das anteilig mitzählen, hier steht es getrennt.'},
+  {key:'tomtarea', label:'Tomtarea', de:'Grundstücksfläche',
+   re:/tomt(?:area|yta|storlek)?\s*[:\-]?\s*([\d\s\u00a0\u202f .,]+)\s*(?:m²|kvm|m2)/i, kind:'m2',
+   exp:'Grundstücksgröße. Nur bei Häusern angegeben.'},
+  {key:'rum', label:'Antal rum', de:'Zimmer',
+   re:[/antal\s+rum\s*[:\-]?\s*(\d+(?:[.,]\d)?)/i, /(?:^|\n)[ \t]*rum\s*[:\-]?\s*(\d+(?:[.,]\d)?)/i, /(\d+(?:[.,]\d)?)\s*(?:rum|rok)\b/i], kind:'num',
+   exp:'Gezählt werden Wohnräume ohne Küche und Bad. Ein „3 rum“ ist in deutscher Zählung meist eine Dreizimmerwohnung plus Küche.'},
+  {key:'byggar', label:'Byggår', de:'Baujahr',
+   re:/bygg[åa]r\D{0,12}((?:1[89]|20)\d{2})/i, kind:'raw',
+   exp:'Baujahr. Bei Bostadsrätter sagt es auch etwas über die anstehenden Sanierungen der Förening.'},
+  {key:'vaning', label:'Våning', de:'Etage',
+   re:/v[åa]ning\s*[:\-]?\s*([^\n]{1,40})/i, kind:'text',
+   exp:'„3 av 5“ heißt drittes von fünf Geschossen. „hiss finns“ bedeutet, dass es einen Aufzug gibt.'},
+  {key:'upplatelseform', label:'Upplåtelseform', de:'Eigentumsform',
+   re:/uppl[åa]telseform\s*[:\-]?\s*([^\n]{1,40})/i, kind:'text',
+   exp:'Bostadsrätt ist der Anteil an einer Genossenschaft, Äganderätt echtes Eigentum, Tomträtt Erbpacht auf fremdem Grund.'},
+  {key:'bostadstyp', label:'Bostadstyp', de:'Objektart',
+   re:/bostadstyp\s*[:\-]?\s*([^\n]{1,40})/i, kind:'text',
+   exp:'Lägenhet ist Wohnung, Villa das freistehende Haus, Radhus das Reihenhaus, Fritidshus das Ferienhaus.'},
+  {key:'forening', label:'Förening', de:'Genossenschaft',
+   re:/f[öo]rening(?:en)?\s*[:\-]?\s*((?:brf|bostadsr)[^\n]{0,50})/i, kind:'text',
+   exp:'Ihre Finanzen sind deine Finanzen. Der Jahresabschluss (årsredovisning) ist öffentlich und sagt mehr als jedes Foto.'},
+  {key:'energiklass', label:'Energiklass', de:'Energieklasse',
+   re:/energiklass\s*[:\-]?\s*([A-G])\b/i, kind:'text',
+   exp:'Aus der energideklaration, die beim Verkauf in der Regel vorliegen muss. Ausgenommen sind kleine Gebäude unter 50 m² und Häuser, die weniger als vier Monate im Jahr genutzt werden.'},
+  {key:'tilltrade', label:'Tillträde', de:'Übergabe',
+   re:/tilltr[äa]de\s*[:\-]?\s*([^\n]{1,40})/i, kind:'text',
+   exp:'„Enligt överenskommelse“ heißt nach Vereinbarung. Zwischen Vertrag und Übergabe liegen in Schweden oft Monate.'}
+];
+
+const nf = new Intl.NumberFormat('de-DE');
+function parseNum(s){
+  const t = String(s).replace(/[\s  .]/g,'').replace(',', '.');
+  const v = parseFloat(t);
+  return isFinite(v) ? v : null;
+}
+function fmtKr(v){ return nf.format(Math.round(v)) + ' kr'; }
+
+function analyse(text){
+  const found = {};
+  for(const f of FIELDS){
+    const res = Array.isArray(f.re) ? f.re : [f.re];
+    let m = null;
+    for(const re of res){ m = text.match(re); if(m) break; }
+    if(!m) continue;
+    const raw = m[1].trim().replace(/[,;]$/,'');
+    if(f.kind==='kr' || f.kind==='m2' || f.kind==='num'){
+      const v = parseNum(raw);
+      if(v===null) continue;
+      found[f.key] = {f, num:v, disp: f.kind==='kr' ? fmtKr(v) : (f.kind==='m2' ? nf.format(v)+' m²' : nf.format(v))};
+    } else {
+      found[f.key] = {f, disp: raw};
+    }
+  }
+  return found;
+}
+
+function derive(d){
+  const out = [], flags = [];
+  const price = d.slutpris?.num ?? d.utgangspris?.num ?? null;
+  const priceLabel = d.slutpris ? 'Slutpris' : 'Utgångspris';
+  const boa = d.boarea?.num ?? null;
+  const bia = d.biarea?.num ?? null;
+  const avg = d.avgift?.num ?? null;
+  const drift = d.driftkostnad?.num ?? null;
+
+  if(price && boa) out.push({k:'Preis je m² Wohnfläche (auf '+priceLabel+')', v: fmtKr(price/boa)+'/m²'});
+  if(price && boa && bia) out.push({k:'Preis je m² inkl. Nebenfläche', v: fmtKr(price/(boa+bia))+'/m²'});
+  if(avg && boa) out.push({k:'Avgift je m² und Jahr', v: fmtKr(avg*12/boa)+'/m²'});
+  if(avg) out.push({k:'Avgift im Jahr', v: fmtKr(avg*12)});
+  if(avg || drift){
+    const month = (avg||0) + (drift? drift/12 : 0);
+    out.push({k:'Fixkosten im Monat, ohne Kredit' + (drift?' (Avgift + Driftkostnad)':''), v: fmtKr(month)});
+  }
+
+  const form = ((d.upplatelseform?.disp||'') + ' ' + (d.bostadstyp?.disp||'')).toLowerCase();
+  const isBR = /bostadsr/.test(form);
+  const isTomt = /tomtr/.test(form);
+  const isOwn = /[äa]gander|villa|radhus|fritidshus|kedjehus|parhus/.test(form);
+
+  if(price && (isOwn || isTomt)){
+    out.push({k:'Stämpelskatt, grob: 1,5 % auf '+priceLabel+' + 825 kr Gebühr', v: fmtKr(price*0.015 + 825)});
+    flags.push('Die Stämpelskatt wird auf den <strong>höheren</strong> Wert aus Kaufpreis und taxeringsvärde berechnet, und auf jeden <strong>neu</strong> ausgestellten Pantbrev kommen noch einmal 2 %. Vorhandene Pantbrev gehen auf dich über und kosten nichts — die Frage an den Mäklare, bevor du bietest.');
+  }
+  if(isBR) flags.push('Bei einer Bostadsrätt fällt <strong>keine Stämpelskatt</strong> an — du kaufst einen Genossenschaftsanteil, kein Grundstück.');
+  if(isTomt) flags.push('<strong>Tomträtt:</strong> Das Haus gehört dir, der Boden nicht. Die tomträttsavgäld an die Kommune kommt zu den laufenden Kosten dazu und wird regelmäßig neu festgesetzt.');
+  if(bia) flags.push('Das Inserat nennt <strong>'+nf.format(bia)+' m² Biarea</strong> zusätzlich zur Wohnfläche. In deutschen Anzeigen wäre ein Teil davon in der Wohnfläche enthalten — die beiden Zahlen sind nicht vergleichbar.');
+  if(price) flags.push('Alle Beträge oben rechnen mit dem <strong>'+priceLabel+'</strong>.' + (d.slutpris ? '' : ' Das ist der Startpreis der Bieterrunde, nicht der Preis, den du am Ende zahlst.'));
+  if(!avg && isBR) flags.push('Im eingefügten Text steht <strong>keine Avgift</strong>. Bei einer Bostadsrätt ist das die zweitwichtigste Zahl nach dem Preis — nachfragen.');
+  return {out, flags};
+}
+
+function render(){
+  const text = document.getElementById('src').value;
+  const out = document.getElementById('out');
+  const calcBox = document.getElementById('calcbox');
+  const calc = document.getElementById('calc');
+  const flagBox = document.getElementById('flagbox');
+
+  if(!text.trim()){
+    out.innerHTML = '<p class="empty">Noch nichts eingefügt.</p>';
+    calcBox.hidden = true; flagBox.hidden = true; return;
+  }
+  const d = analyse(text);
+  const keys = Object.keys(d);
+  if(!keys.length){
+    out.innerHTML = '<p class="empty">In diesem Text wurde keine der bekannten Zeilen gefunden. Kopiere die Faktenliste des Inserats — die Zeilen mit Utgångspris, Avgift, Boarea und Byggår.</p>';
+    calcBox.hidden = true; flagBox.hidden = true; return;
+  }
+
+  const dl = document.createElement('dl');
+  dl.className = 'fields';
+  for(const f of FIELDS){
+    const hit = d[f.key];
+    if(!hit) continue;
+    const row = document.createElement('div');
+    const dt = document.createElement('dt'); dt.textContent = f.label;
+    const dv = document.createElement('dd'); dv.className = 'val'; dv.textContent = hit.disp;
+    const de = document.createElement('dd'); de.className = 'exp'; de.textContent = f.de + ' — ' + f.exp;
+    row.append(dt, dv, de); dl.append(row);
+  }
+  out.innerHTML = '';
+  out.append(dl);
+
+  const missing = FIELDS.filter(f => ['utgangspris','avgift','boarea','byggar'].includes(f.key) && !d[f.key]).map(f=>f.label);
+  if(missing.length){
+    const p = document.createElement('p');
+    p.className = 'miss';
+    p.style.marginTop = '14px';
+    p.textContent = 'Nicht gefunden: ' + missing.join(', ');
+    out.append(p);
+  }
+
+  const {out:rows, flags} = derive(d);
+  calc.innerHTML = '';
+  rows.forEach(r => {
+    const li = document.createElement('li');
+    const k = document.createElement('span'); k.className='k'; k.textContent = r.k;
+    const v = document.createElement('span'); v.className='v'; v.textContent = r.v;
+    li.append(k,v); calc.append(li);
+  });
+  calcBox.hidden = rows.length === 0;
+
+  flagBox.innerHTML = '';
+  flags.forEach(t => {
+    const div = document.createElement('div'); div.className='flag'; div.innerHTML = t; flagBox.append(div);
+  });
+  flagBox.hidden = flags.length === 0;
+}
+
+const src = document.getElementById('src');
+const tag = document.getElementById('tag');
+function loadSample(){ src.value = SAMPLE; tag.hidden = false; render(); }
+src.addEventListener('input', () => { tag.hidden = src.value !== SAMPLE; });
+document.getElementById('go').addEventListener('click', render);
+document.getElementById('demo').addEventListener('click', loadSample);
+document.getElementById('clear').addEventListener('click', () => { src.value=''; tag.hidden=true; render(); src.focus(); });
+loadSample();
+</script>
+
+</main>
+<div class="nab-more"><div class="in">
+  <h2>Weitere Werkzeuge</h2>
+  <ul><li><a href="/kaufnebenkosten/">Kaufnebenkosten Schweden</a></li><li><a href="/fragen-an-den-maeklare/">Fragen an den Mäklare</a></li><li><a href="/behoerden-reihenfolge/">Behörden-Reihenfolge Schweden</a></li><li><a href="/fixkosten-goeteborg/">Fixkosten Göteborg</a></li></ul>
+</div></div><div class="nab-foot"><div class="in">
+  <div>
+    <p class="mark">nordabenteuer<b>.</b></p>
+    <p>Der deutschsprachige Ratgeber für den Umzug nach Schweden und den Hauskauf dort — von jemandem, der beides gemacht hat.</p>
+    <a class="btn" href="https://www.nordabenteuer.de/beratung">Konkrete Fragen? Reden wir.</a>
+  </div>
+  <div>
+    <h3>Werkzeuge</h3>
+    <ul><li><a href="/inserat-auf-deutsch/">Inserat auf Deutsch</a></li><li><a href="/kaufnebenkosten/">Kaufnebenkosten Schweden</a></li><li><a href="/fragen-an-den-maeklare/">Fragen an den Mäklare</a></li><li><a href="/behoerden-reihenfolge/">Behörden-Reihenfolge Schweden</a></li><li><a href="/fixkosten-goeteborg/">Fixkosten Göteborg</a></li></ul>
+  </div>
+  <div>
+    <h3>nordabenteuer.de</h3>
+    <ul>
+      <li><a href="https://www.nordabenteuer.de/ratgeber">Ratgeber — alle Artikel</a></li>
+      <li><a href="https://www.nordabenteuer.de/shop">Guides zum Download</a></li>
+      <li><a href="https://www.nordabenteuer.de/beratung">Beratung und Objektcheck</a></li>
+      <li><a href="https://www.nordabenteuer.de/umzugscheck">Kostenloser Umzugscheck</a></li>
+      <li><a href="https://www.nordabenteuer.de/kontakt">Kontakt</a></li>
+    </ul>
+  </div>
+  <div class="legal">
+    <span>Alle Werkzeuge rechnen im Browser. Nichts wird gespeichert, hochgeladen oder von fremden Seiten abgerufen. Keine Rechts- oder Steuerberatung.</span>
+    <span><a href="https://www.nordabenteuer.de/impressum">Impressum</a> · <a href="https://www.nordabenteuer.de/datenschutz">Datenschutz</a> · © 2026 Sebastian Schiefner</span>
+  </div>
+</div></div>
+</body>
+</html>

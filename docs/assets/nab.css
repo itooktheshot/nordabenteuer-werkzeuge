@@ -1,0 +1,96 @@
+/* werkzeuge.nordabenteuer.de — gemeinsame Gestaltung
+   Tokens folgen dem Pastellpop-Design von nordabenteuer.de (Custom CSS, Stand 27.10.2026).
+   Die Werkzeuge selbst nutzen nur die generischen Namen (--paper, --ink, …); hier werden sie auf die Marke gelegt. */
+
+:root{
+  --nab-ink:#1E1B2E; --nab-cream:#FFF6E6; --nab-butter:#F8EDCF; --nab-cobalt:#2447C9; --nab-cobalt-d:#16308F;
+  --nab-lemon:#F4D24A; --nab-blush:#F6D3CB; --nab-lilac:#C9B6E4; --nab-lilac-d:#4E3A7A; --nab-tomato:#E2452C;
+
+  --paper:var(--nab-cream);
+  --ink:var(--nab-ink);
+  --ink-soft:var(--nab-lilac-d);
+  --rule:#E6D8C3;
+  --card:#FFFFFF;
+  --accent:var(--nab-cobalt);
+  --accent-soft:var(--nab-butter);
+  --flag:var(--nab-tomato);
+  --flag-soft:var(--nab-blush);
+
+  --font-display:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-ui:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-data:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-ui);line-height:1.55;margin:0;min-height:100vh;display:flex;flex-direction:column}
+main{flex:1 0 auto}
+h1,h2,h3{font-family:var(--font-display);letter-spacing:-.01em}
+h1{font-weight:800}
+h2{font-weight:700}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Kopfleiste */
+.nab-head{border-bottom:1px solid var(--ink);background:var(--paper)}
+.nab-head .in{max-width:1120px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.nab-mark{font-family:var(--font-display);font-weight:800;font-size:1.5rem;letter-spacing:-.02em;color:var(--ink);text-decoration:none;line-height:1;display:inline-flex;align-items:baseline;gap:.45em}
+.nab-mark b{color:var(--nab-tomato)}
+.nab-mark small{font-family:var(--font-ui);font-weight:500;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
+.nab-nav{display:flex;gap:4px 18px;flex-wrap:wrap;font-size:.9rem;font-weight:500}
+.nab-nav a{color:var(--ink);text-decoration:none;padding:.2em 0;border-bottom:2px solid transparent}
+.nab-nav a:hover,.nab-nav a[aria-current=page]{border-bottom-color:var(--nab-lemon)}
+
+/* Übersicht */
+.nab-index{max-width:1120px;margin:0 auto;padding:clamp(28px,5vw,56px) max(16px,env(safe-area-inset-right,0px)) clamp(28px,5vw,56px) max(16px,env(safe-area-inset-left,0px))}
+.nab-index h1{font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.02;margin:0 0 .35em;text-wrap:balance;max-width:18ch}
+.nab-index .lede{font-size:1.08rem;color:var(--ink-soft);max-width:60ch;margin:0 0 1.6em}
+.nab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;margin:0;padding:0;list-style:none}
+.nab-card{display:flex;flex-direction:column;gap:10px;background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:20px;text-decoration:none;color:var(--ink);min-height:100%;position:relative;transition:transform .15s ease,border-color .15s ease}
+.nab-card:hover{transform:translateY(-2px);border-color:var(--ink)}
+.nab-card .kick{font-family:var(--font-data);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.nab-card h2{font-size:1.35rem;margin:0;line-height:1.15}
+.nab-card p{margin:0;font-size:.93rem;color:var(--ink-soft);flex:1}
+.nab-card .go{font-weight:600;font-size:.9rem;color:var(--ink)}
+.nab-card .go::after{content:" →"}
+.nab-card.a{background:var(--nab-butter)}
+.nab-card.b{background:var(--nab-blush)}
+.nab-card.c{background:var(--nab-lilac)}
+.nab-card.d{background:#CFE0F2}
+.nab-card.e{background:#CFEBD9}
+.nab-card.a,.nab-card.b,.nab-card.c,.nab-card.d,.nab-card.e{border-color:transparent}
+.nab-card.a p,.nab-card.b p,.nab-card.c p,.nab-card.d p,.nab-card.e p{color:var(--ink)}
+.nab-promise{margin:30px 0 0;padding:18px 20px;border:1px solid var(--ink);border-radius:6px;background:var(--card);display:grid;gap:6px;font-size:.93rem}
+.nab-promise strong{font-family:var(--font-display);font-weight:700}
+.nab-about{margin:26px 0 0;font-size:.93rem;color:var(--ink-soft);max-width:64ch}
+
+/* Weitere Werkzeuge unter jedem Tool */
+.nab-more{border-top:1px solid var(--rule);background:var(--nab-butter)}
+.nab-more .in{max-width:1120px;margin:0 auto;padding:22px max(16px,env(safe-area-inset-right,0px)) 26px max(16px,env(safe-area-inset-left,0px))}
+.nab-more h2{font-size:1rem;margin:0 0 .6em;font-weight:700}
+.nab-more ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.nab-more a{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:999px;padding:.4em .95em;font-size:.86rem;font-weight:500;color:var(--ink);text-decoration:none}
+.nab-more a:hover{border-color:var(--ink)}
+
+/* Fußleiste — dunkel wie auf nordabenteuer.de */
+.nab-foot{background:var(--nab-ink);color:var(--nab-cream);margin-top:0}
+.nab-foot .in{max-width:1120px;margin:0 auto;padding:34px max(16px,env(safe-area-inset-right,0px)) 30px max(16px,env(safe-area-inset-left,0px));display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.nab-foot h3{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;margin:0 0 .7em;color:var(--nab-lemon);font-family:var(--font-ui);font-weight:600}
+.nab-foot ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:.92rem}
+.nab-foot a{color:var(--nab-cream);text-decoration:none;border-bottom:1px solid rgba(255,246,230,.35)}
+.nab-foot a:hover{border-bottom-color:var(--nab-lemon)}
+.nab-foot .mark{font-family:var(--font-display);font-weight:800;font-size:1.4rem;letter-spacing:-.02em;margin:0 0 .4em}
+.nab-foot .mark b{color:var(--nab-tomato)}
+.nab-foot p{margin:0;font-size:.88rem;color:#D9D3E6;max-width:40ch}
+.nab-foot .btn{display:inline-block;margin-top:12px;background:var(--nab-lemon);color:var(--nab-ink);border:0;border-radius:999px;padding:.6em 1.1em;font-weight:600;font-size:.9rem}
+.nab-foot .btn:hover{background:#F7DC6A;border-bottom-color:transparent}
+.nab-foot .legal{grid-column:1 / -1;border-top:1px solid rgba(255,246,230,.18);padding-top:16px;font-size:.8rem;color:#B9B2CC;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
+.nab-foot .legal a{color:#D9D3E6}
+
+/* Fehlerseite */
+.nab-404{max-width:720px;margin:0 auto;padding:clamp(40px,8vw,90px) 16px}
+.nab-404 h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 .4em}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.nab-head,.nab-more,.nab-foot{display:none}}
