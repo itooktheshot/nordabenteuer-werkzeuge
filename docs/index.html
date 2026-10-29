@@ -21,13 +21,20 @@
 </head>
 <body><div class="nab-head"><div class="in">
   <a class="nab-mark" href="https://www.nordabenteuer.de/" aria-label="nordabenteuer.de">nordabenteuer<b>.</b> <small>Werkzeuge</small></a>
-  <nav class="nab-nav" aria-label="Seiten">
-    <a href="/" aria-current="page">Alle Werkzeuge</a>
+  <button class="nab-burger" type="button" aria-expanded="false" aria-controls="nab-nav"><span></span>Menü</button>
+  <nav class="nab-nav" id="nab-nav" aria-label="Hauptnavigation">
+    <a href="https://www.nordabenteuer.de/">Home</a>
     <a href="https://www.nordabenteuer.de/ratgeber">Ratgeber</a>
+    <a href="/" aria-current="page">Werkzeuge</a>
+    <a href="https://www.nordabenteuer.de/immobilien">Immobilien</a>
     <a href="https://www.nordabenteuer.de/shop">Guides</a>
     <a href="https://www.nordabenteuer.de/beratung">Beratung</a>
+    <a href="https://www.nordabenteuer.de/about">Über mich</a>
+    <a href="https://www.nordabenteuer.de/kontakt">Kontakt</a>
+    <a class="nab-lang" href="https://www.nordabenteuer.de/english/welcome" lang="en" hreflang="en" aria-label="English version of nordabenteuer.de">EN</a>
   </nav>
 </div></div>
+<script>(function(){var d=document.documentElement;d.className+=' js';var b=document.querySelector('.nab-burger'),n=document.getElementById('nab-nav');b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));n.classList.toggle('open',!o);});})();</script>
 <main class="nab-index">
   <h1>Werkzeuge für Schweden, auf Deutsch.</h1>
   <p class="lede">Kleine Rechner und Listen für die Momente, in denen ein Artikel nicht reicht: wenn ein Inserat vor dir liegt, ein Gebot ansteht oder die Behördenkette anfängt. Kostenlos, ohne Anmeldung, ohne dass etwas deinen Browser verlässt.</p>

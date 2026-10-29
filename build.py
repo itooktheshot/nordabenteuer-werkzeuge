@@ -76,18 +76,28 @@ def head(title, desc, path, extra=""):
 
 
 def header(current=None):
-    def a(href, label, key):
-        cur = ' aria-current="page"' if key == current else ""
-        return f'<a href="{href}"{cur}>{label}</a>'
+    """Gleiche Navigation wie www.nordabenteuer.de (Stand 29.10.2026), Werkzeuge markiert."""
+    items = [
+        (MAIN + '/', 'Home'),
+        (MAIN + '/ratgeber', 'Ratgeber'),
+        ('/', 'Werkzeuge'),
+        (MAIN + '/immobilien', 'Immobilien'),
+        (MAIN + '/shop', 'Guides'),
+        (MAIN + '/beratung', 'Beratung'),
+        (MAIN + '/about', 'Über mich'),
+        (MAIN + '/kontakt', 'Kontakt'),
+    ]
+    links = "\n    ".join(
+        f'<a href="{h}"' + (' aria-current="page"' if l == 'Werkzeuge' else '') + f'>{l}</a>' for h, l in items)
     return f"""<div class="nab-head"><div class="in">
   <a class="nab-mark" href="{MAIN}/" aria-label="nordabenteuer.de">nordabenteuer<b>.</b> <small>Werkzeuge</small></a>
-  <nav class="nab-nav" aria-label="Seiten">
-    {a('/', 'Alle Werkzeuge', 'index')}
-    {a(MAIN + '/ratgeber', 'Ratgeber', 'ratgeber')}
-    {a(MAIN + '/shop', 'Guides', 'shop')}
-    {a(MAIN + '/beratung', 'Beratung', 'beratung')}
+  <button class="nab-burger" type="button" aria-expanded="false" aria-controls="nab-nav"><span></span>Menü</button>
+  <nav class="nab-nav" id="nab-nav" aria-label="Hauptnavigation">
+    {links}
+    <a class="nab-lang" href="{MAIN}/english/welcome" lang="en" hreflang="en" aria-label="English version of nordabenteuer.de">EN</a>
   </nav>
-</div></div>"""
+</div></div>
+<script>(function(){{var d=document.documentElement;d.className+=' js';var b=document.querySelector('.nab-burger'),n=document.getElementById('nab-nav');b.addEventListener('click',function(){{var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));n.classList.toggle('open',!o);}});}})();</script>"""
 
 
 def more(current_slug):
