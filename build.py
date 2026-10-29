@@ -227,10 +227,8 @@ def build_meta():
 
 
 def main():
-    if OUT.exists():
-        shutil.rmtree(OUT)
-    OUT.mkdir()
-    shutil.copytree(ASSETS, OUT / "assets")
+    OUT.mkdir(exist_ok=True)
+    shutil.copytree(ASSETS, OUT / "assets", dirs_exist_ok=True)
     for t in TOOLS:
         build_tool(t)
     build_index()
