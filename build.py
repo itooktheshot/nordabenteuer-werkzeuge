@@ -45,9 +45,8 @@ TOOLS = [
          desc="Monatliche Fixkosten in Göteborg berechnen: Förskola-Gebühr nach Maxtaxa (ab Juli 2026), Västtrafik Zone A, Frikort und Högkostnadsskydd. Mit Euro-Umrechnung."),
 ]
 
-FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
-         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">')
+FONTS = ('<link rel="preload" href="/assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>'
+         '<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>')
 
 
 def head(title, desc, path, extra=""):

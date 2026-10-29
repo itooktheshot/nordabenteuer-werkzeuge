@@ -2,6 +2,16 @@
    Tokens folgen dem Pastellpop-Design von nordabenteuer.de (Custom CSS, Stand 27.10.2026).
    Die Werkzeuge selbst nutzen nur die generischen Namen (--paper, --ink, …); hier werden sie auf die Marke gelegt. */
 
+/* Schriften selbst gehostet (Fontsource, SIL Open Font License) — keine Verbindung zu Google */
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/dm-sans-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/dm-sans-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/dm-sans-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/dm-sans-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/bricolage-grotesque-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/bricolage-grotesque-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Mono";font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/dm-mono-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Mono";font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/dm-mono-latin-500-normal.woff2) format("woff2")}
+
 :root{
   --nab-ink:#1E1B2E; --nab-cream:#FFF6E6; --nab-butter:#F8EDCF; --nab-cobalt:#2447C9; --nab-cobalt-d:#16308F;
   --nab-lemon:#F4D24A; --nab-blush:#F6D3CB; --nab-lilac:#C9B6E4; --nab-lilac-d:#4E3A7A; --nab-tomato:#E2452C;

@@ -68,7 +68,12 @@ Seitentitel oder Pfad. Keine Nachahmung ihrer Gestaltung.
 
 ## Datenschutz
 
-Die Seiten setzen keine Cookies, laden kein Analytics und senden nichts. Einzige
-externe Abhängigkeit: Schriften von Google Fonts (Bricolage Grotesque, DM Sans,
-DM Mono) — dieselben wie auf nordabenteuer.de. Die Datenschutzerklärung auf
-nordabenteuer.de sollte Google Fonts und GitHub Pages (Hosting, Server-Logs) nennen.
+Die Seiten setzen keine Cookies, laden kein Analytics und senden nichts. Die
+Schriften (Bricolage Grotesque, DM Sans, DM Mono) liegen selbst gehostet in
+`assets/fonts/` (Fontsource, SIL Open Font License) — es gibt **keine**
+Verbindung zu Google Fonts. Einziger Dritter ist GitHub als Hoster
+(Server-Logs); das steht in der Datenschutzerklärung von nordabenteuer.de,
+Abschnitt 3.
+
+Die Zeile 3 in jeder `src/*.html` (Google-Fonts-Link) wird von `build.py`
+verworfen und landet nicht in `docs/`.
