@@ -132,20 +132,23 @@ Energiklass D
 Tillträde Enligt överenskommelse`;
 
 const FIELDS = [
-  {key:'utgangspris', label:'Utgångspris', de:'Ausgangspreis',
+  {key:'hyra', label:'Hyra', de:'Miete',
+   re:/(?:^|\n)[ \t]*(?:m[åa]nads)?hyra\s*[:\-]?\s*([\d\s\u00a0\u202f .,]+)\s*kr/i, kind:'kr', unit:'/Monat',
+   exp:'Das ist eine Mietanzeige, kein Verkauf. In Schweden heißt Miete fast immer Warmmiete: Heizung und Wasser sind drin, Strom und Internet meist nicht.'},
+  {key:'utgangspris', label:'Utgångspris', de:'Ausgangspreis', altLabel:['Utgångspris','Pris'],
    re:[/utg[åa]ngspris\s*[:\-]?\s*([\d\s\u00a0\u202f .,]+)\s*kr/i, /(?:^|\n)[ \t]*(?:beg[äa]rt\s+pris|accepterat\s+pris|pris)\s*[:\-]?\s*([\d\s\u00a0\u202f .,]+)\s*kr/i], kind:'kr',
-   exp:'Der Startpunkt der Bieterrunde, nicht der Preis. Was am Ende gezahlt wird, heißt Slutpris und steht erst nach dem Verkauf fest.'},
+   exp:'Der Startpunkt der Bieterrunde, nicht der Preis — auch wenn das Portal nur „Pris" schreibt. Was am Ende gezahlt wird, heißt Slutpris und steht erst nach dem Verkauf fest.'},
   {key:'slutpris', label:'Slutpris', de:'Endpreis',
    re:/slutpris\D{0,12}([\d\s  .,]+)\s*kr/i, kind:'kr',
    exp:'Der tatsächlich gezahlte Preis. Nur bei bereits verkauften Objekten zu sehen.'},
-  {key:'avgift', label:'Avgift', de:'Monatsgebühr an die Förening',
+  {key:'avgift', label:'Avgift', de:'Monatsgebühr an die Förening', unit:'/Monat',
    re:/(?:m[åa]nads)?avgift\D{0,12}([\d\s  .,]+)\s*kr/i, kind:'kr',
    exp:'Kein deutsches Hausgeld: Darin steckt dein Anteil an den Schulden der Genossenschaft. Niedrig kann gut gewirtschaftet heißen — oder Sanierung noch vor sich.'},
-  {key:'driftkostnad', label:'Driftkostnad', de:'Laufende Kosten',
+  {key:'driftkostnad', label:'Driftkostnad', de:'Laufende Kosten', unit:'/Jahr',
    re:/driftkostnad\D{0,12}([\d\s  .,]+)\s*kr/i, kind:'kr',
    exp:'Heizung, Wasser, Strom, Versicherung — als Jahresbetrag und geschätzt auf den Verbrauch des Verkäufers, nicht auf deinen.'},
   {key:'boarea', label:'Boarea', de:'Wohnfläche',
-   re:/bo(?:area|yta)\D{0,12}([\d\s  .,]+)\s*(?:m²|kvm|m2)/i, kind:'m2',
+   re:[/bo(?:area|yta)\s*[:\-]?\s*([\d\s\u00a0\u202f .,]+)\s*(?:m²|kvm|m2)/i, /\d+(?:[.,]\d)?\s*(?:rum|rok),?\s*([\d\s\u00a0\u202f .,]+?)\s*(?:m²|kvm|m2)/i], kind:'m2',
    exp:'Die anrechenbare Wohnfläche. Der Quadratmeterpreis wird fast immer hierauf gerechnet.'},
   {key:'biarea', label:'Biarea', de:'Nebenfläche',
    re:/bi(?:area|yta)\D{0,12}([\d\s  .,]+)\s*(?:m²|kvm|m2)/i, kind:'m2',
@@ -166,7 +169,7 @@ const FIELDS = [
    re:/uppl[åa]telseform\s*[:\-]?\s*([^\n]{1,40})/i, kind:'text',
    exp:'Bostadsrätt ist der Anteil an einer Genossenschaft, Äganderätt echtes Eigentum, Tomträtt Erbpacht auf fremdem Grund.'},
   {key:'bostadstyp', label:'Bostadstyp', de:'Objektart',
-   re:/bostadstyp\s*[:\-]?\s*([^\n]{1,40})/i, kind:'text',
+   re:[/bostadstyp\s*[:\-]?\s*([^\n]{1,40})/i, /(?:^|\n)[ \t]*((?:bostadsr[äa]tts)?(?:l[äa]genhet|villa|radhus|parhus|kedjehus|fritidshus|fritidsboende|g[åa]rd|tomt)(?:\s*\/\s*\w+)?)[ \t]*(?=\n|$)/i], kind:'text',
    exp:'Lägenhet ist Wohnung, Villa das freistehende Haus, Radhus das Reihenhaus, Fritidshus das Ferienhaus.'},
   {key:'forening', label:'Förening', de:'Genossenschaft',
    re:/f[öo]rening(?:en)?\s*[:\-]?\s*((?:brf|bostadsr)[^\n]{0,50})/i, kind:'text',
@@ -191,16 +194,17 @@ function analyse(text){
   const found = {};
   for(const f of FIELDS){
     const res = Array.isArray(f.re) ? f.re : [f.re];
-    let m = null;
-    for(const re of res){ m = text.match(re); if(m) break; }
+    let m = null, idx = -1;
+    for(let i = 0; i < res.length; i++){ m = text.match(res[i]); if(m){ idx = i; break; } }
     if(!m) continue;
+    const label = (f.altLabel && f.altLabel[idx]) || f.label;
     const raw = m[1].trim().replace(/[,;]$/,'');
     if(f.kind==='kr' || f.kind==='m2' || f.kind==='num'){
       const v = parseNum(raw);
       if(v===null) continue;
-      found[f.key] = {f, num:v, disp: f.kind==='kr' ? fmtKr(v) : (f.kind==='m2' ? nf.format(v)+' m²' : nf.format(v))};
+      found[f.key] = {f, label, num:v, disp: (f.kind==='kr' ? fmtKr(v) : (f.kind==='m2' ? nf.format(v)+' m²' : nf.format(v))) + (f.unit||'')};
     } else {
-      found[f.key] = {f, disp: raw};
+      found[f.key] = {f, label, disp: raw};
     }
   }
   return found;
@@ -209,19 +213,26 @@ function analyse(text){
 function derive(d){
   const out = [], flags = [];
   const price = d.slutpris?.num ?? d.utgangspris?.num ?? null;
-  const priceLabel = d.slutpris ? 'Slutpris' : 'Utgångspris';
+  const priceLabel = d.slutpris ? 'Slutpris' : (d.utgangspris?.label || 'Utgångspris');
   const boa = d.boarea?.num ?? null;
   const bia = d.biarea?.num ?? null;
   const avg = d.avgift?.num ?? null;
   const drift = d.driftkostnad?.num ?? null;
 
+  const hyra = d.hyra?.num ?? null;
+  if(hyra && !price){
+    if(boa) out.push({k:'Miete je m² und Monat', v: fmtKr(hyra/boa)+'/m²'});
+    flags.push('<strong>Mietanzeige.</strong> Die Hyra ist in Schweden in der Regel Warmmiete. Entscheidend ist der Vertragstyp: Erstvertrag (förstahandskontrakt) oder Untermiete (andrahand) — bei Untermiete ist die Dauer meist begrenzt und die Miete darf nur wenig über der Originalmiete liegen.');
+    return {out, flags};
+  }
   if(price && boa) out.push({k:'Preis je m² Wohnfläche (auf '+priceLabel+')', v: fmtKr(price/boa)+'/m²'});
   if(price && boa && bia) out.push({k:'Preis je m² inkl. Nebenfläche', v: fmtKr(price/(boa+bia))+'/m²'});
   if(avg && boa) out.push({k:'Avgift je m² und Jahr', v: fmtKr(avg*12/boa)+'/m²'});
   if(avg) out.push({k:'Avgift im Jahr', v: fmtKr(avg*12)});
   if(avg || drift){
     const month = (avg||0) + (drift? drift/12 : 0);
-    out.push({k:'Fixkosten im Monat, ohne Kredit' + (drift?' (Avgift + Driftkostnad)':''), v: fmtKr(month)});
+    const parts = [avg ? 'Avgift' : null, drift ? 'Driftkostnad' : null].filter(Boolean).join(' + ');
+    out.push({k:'Fixkosten im Monat, ohne Kredit (' + parts + ')', v: fmtKr(month)});
   }
 
   const form = ((d.upplatelseform?.disp||'') + ' ' + (d.bostadstyp?.disp||'')).toLowerCase();
@@ -265,7 +276,7 @@ function render(){
     const hit = d[f.key];
     if(!hit) continue;
     const row = document.createElement('div');
-    const dt = document.createElement('dt'); dt.textContent = f.label;
+    const dt = document.createElement('dt'); dt.textContent = hit.label;
     const dv = document.createElement('dd'); dv.className = 'val'; dv.textContent = hit.disp;
     const de = document.createElement('dd'); de.className = 'exp'; de.textContent = f.de + ' — ' + f.exp;
     row.append(dt, dv, de); dl.append(row);
@@ -273,7 +284,8 @@ function render(){
   out.innerHTML = '';
   out.append(dl);
 
-  const missing = FIELDS.filter(f => ['utgangspris','avgift','boarea','byggar'].includes(f.key) && !d[f.key]).map(f=>f.label);
+  const want = d.hyra && !d.utgangspris && !d.slutpris ? ['boarea'] : ['utgangspris','avgift','boarea','byggar'];
+  const missing = FIELDS.filter(f => want.includes(f.key) && !d[f.key]).map(f=>f.label);
   if(missing.length){
     const p = document.createElement('p');
     p.className = 'miss';
