@@ -6,6 +6,9 @@
 <title>Kaufnebenkosten Schweden – Werkzeuge von nordabenteuer.de</title>
 <meta name="description" content="Kaufnebenkosten beim Hauskauf in Schweden berechnen: Stämpelskatt 1,5 %, Pantbrev 2 %, Lagfart-Gebühr, Fastighetsavgift. Mit Bostadsrätt, Äganderätt und Tomträtt.">
 <link rel="canonical" href="https://werkzeuge.nordabenteuer.de/kaufnebenkosten/">
+<link rel="alternate" hreflang="de" href="https://werkzeuge.nordabenteuer.de/kaufnebenkosten/">
+<link rel="alternate" hreflang="en" href="https://werkzeuge.nordabenteuer.de/en/buying-costs-sweden/">
+<link rel="alternate" hreflang="x-default" href="https://werkzeuge.nordabenteuer.de/kaufnebenkosten/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="nordabenteuer.de">
 <meta property="og:title" content="Kaufnebenkosten Schweden – Werkzeuge von nordabenteuer.de">
@@ -17,6 +20,7 @@
 <meta name="theme-color" content="#FFF6E6">
 <link rel="preload" href="/assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/nab.css?v=36245c1a">
+<script src="/assets/zahlen.js?v=49c510e2"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Kaufnebenkosten Schweden", "url": "https://werkzeuge.nordabenteuer.de/kaufnebenkosten/", "description": "Kaufnebenkosten beim Hauskauf in Schweden berechnen: Stämpelskatt 1,5 %, Pantbrev 2 %, Lagfart-Gebühr, Fastighetsavgift. Mit Bostadsrätt, Äganderätt und Tomträtt.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "inLanguage": "de", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "publisher": {"@type": "Organization", "name": "nordabenteuer.de", "url": "https://www.nordabenteuer.de/"}, "author": {"@type": "Person", "name": "Sebastian Schiefner"}}</script>
 </head>
 <body><div class="nab-head"><div class="in">
@@ -31,7 +35,7 @@
     <a href="https://www.nordabenteuer.de/beratung">Beratung</a>
     <a href="https://www.nordabenteuer.de/about">Über mich</a>
     <a href="https://www.nordabenteuer.de/kontakt">Kontakt</a>
-    <a class="nab-lang" href="https://www.nordabenteuer.de/english/welcome" lang="en" hreflang="en" aria-label="English version of nordabenteuer.de">EN</a>
+    <a class="nab-lang" href="/en/buying-costs-sweden/" lang="en" hreflang="en" aria-label="This tool in English">EN</a>
   </nav>
 </div></div>
 <script>(function(){var d=document.documentElement;d.className+=' js';var b=document.querySelector('.nab-burger'),n=document.getElementById('nab-nav');b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));n.classList.toggle('open',!o);});})();</script>
@@ -139,20 +143,13 @@ main footer a{color:inherit}
 </div>
 
 <footer>
-  <p class="stand">Stand der Sätze und Gebühren: Oktober 2026. Quellen: Lantmäteriet (Stämpelskatt, Lagfart, Pantbrev), Skatteverket (fastighetsavgift).</p>
+  <p class="stand">Stand der Sätze und Gebühren: <span data-stand></span>. Quellen: Lantmäteriet (Stämpelskatt, Lagfart, Pantbrev), Skatteverket (fastighetsavgift).</p>
   <p>Mehr dazu im Ratgeber: <a href="https://www.nordabenteuer.de/ratgeber/staempelskatt-pantbrev-hauskauf-schweden">Stämpelskatt und Pantbrev</a> · <a href="https://www.nordabenteuer.de/ratgeber/hauskauf-schweden-ablauf">Hauskauf in Schweden, Schritt für Schritt</a>. Keine Steuer- oder Rechtsberatung; Sätze und Gebühren ändern sich.</p>
 </footer>
 </div>
 
 <script>
-var SATS = {
-  stampel: 0.015,        // Privatperson, Grund und Boden
-  pantbrev: 0.02,        // je neu ausgestelltem Pantbrev
-  lagfartAvgift: 825,    // Expeditionsavgift Lagfart
-  pantbrevAvgift: 375,   // Expeditionsavgift je Pantbrev
-  fastighetsavgiftSats: 0.0075,
-  fastighetsavgiftTak: 10425   // Einkommensjahr 2026
-};
+var SATS = NAB_ZAHLEN.kauf;  // alle Zahlen in assets/zahlen.js
 var nf = new Intl.NumberFormat('de-DE');
 var kr = function(v){ return nf.format(Math.round(v)) + ' kr'; };
 var state = { typ:'villa' };
@@ -199,7 +196,7 @@ function compute(){
     var fav = Math.min((tax || pris) * SATS.fastighetsavgiftSats, SATS.fastighetsavgiftTak);
     year.push({
       k:'Fastighetsavgift',
-      s:'0,75 % des Taxeringsvärde, gedeckelt bei ' + kr(SATS.fastighetsavgiftTak) + ' für das Einkommensjahr 2026.' + (tax ? '' : ' Ohne Taxeringsvärde mit dem Kaufpreis gerechnet — real meist deutlich niedriger.'),
+      s:'0,75 % des Taxeringsvärde, gedeckelt bei ' + kr(SATS.fastighetsavgiftTak) + ' für das Einkommensjahr ' + SATS.fastighetsavgiftJahr + '.' + (tax ? '' : ' Ohne Taxeringsvärde mit dem Kaufpreis gerechnet — real meist deutlich niedriger.'),
       v: kr(fav)
     });
     if(typ === 'tomt'){
@@ -267,18 +264,13 @@ render();
   </div>
   <div>
     <h3>nordabenteuer.de</h3>
-    <ul>
-      <li><a href="https://www.nordabenteuer.de/ratgeber">Ratgeber — alle Artikel</a></li>
-      <li><a href="https://www.nordabenteuer.de/shop">Guides zum Download</a></li>
-      <li><a href="https://www.nordabenteuer.de/beratung">Beratung und Objektcheck</a></li>
-      <li><a href="https://www.nordabenteuer.de/umzugscheck">Kostenloser Umzugscheck</a></li>
-      <li><a href="https://www.nordabenteuer.de/kontakt">Kontakt</a></li>
-    </ul>
+    <ul><li><a href="https://www.nordabenteuer.de/ratgeber">Ratgeber — alle Artikel</a></li><li><a href="https://www.nordabenteuer.de/shop">Guides zum Download</a></li><li><a href="https://www.nordabenteuer.de/beratung">Beratung und Objektcheck</a></li><li><a href="https://www.nordabenteuer.de/umzugscheck">Kostenloser Umzugscheck</a></li><li><a href="https://www.nordabenteuer.de/kontakt">Kontakt</a></li></ul>
   </div>
   <div class="legal">
     <span>Alle Werkzeuge rechnen im Browser. Nichts wird gespeichert, hochgeladen oder von fremden Seiten abgerufen. Keine Rechts- oder Steuerberatung.</span>
     <span><a href="https://www.nordabenteuer.de/impressum">Impressum</a> · <a href="https://www.nordabenteuer.de/datenschutz">Datenschutz</a> · © 2026 Sebastian Schiefner</span>
   </div>
 </div></div>
+<script>(function(){var s=(window.NAB_ZAHLEN||{}).stand;if(!s)return;document.querySelectorAll('[data-stand]').forEach(function(e){e.textContent=s['de'];});})();</script>
 </body>
 </html>

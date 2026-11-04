@@ -230,7 +230,8 @@ function derive(d){
   const isOwn = /[äa]gander|villa|radhus|fritidshus|kedjehus|parhus/.test(form);
 
   if(price && (isOwn || isTomt)){
-    out.push({k:'Stämpelskatt, grob: 1,5 % auf '+priceLabel+' + 825 kr Gebühr', v: fmtKr(price*0.015 + 825)});
+    const K = NAB_ZAHLEN.kauf;
+    out.push({k:'Stämpelskatt, grob: '+String(K.stampel*100).replace('.',',')+' % auf '+priceLabel+' + '+K.lagfartAvgift+' kr Gebühr', v: fmtKr(price*K.stampel + K.lagfartAvgift)});
     flags.push('Die Stämpelskatt wird auf den <strong>höheren</strong> Wert aus Kaufpreis und taxeringsvärde berechnet, und auf jeden <strong>neu</strong> ausgestellten Pantbrev kommen noch einmal 2 %. Vorhandene Pantbrev gehen auf dich über und kosten nichts — die Frage an den Mäklare, bevor du bietest.');
   }
   if(isBR) flags.push('Bei einer Bostadsrätt fällt <strong>keine Stämpelskatt</strong> an — du kaufst einen Genossenschaftsanteil, kein Grundstück.');

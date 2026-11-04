@@ -115,26 +115,13 @@ footer a{color:inherit}
 </div>
 
 <footer>
-  <p class="stand">Stand der Beträge: Oktober 2026. Quellen: Göteborgs Stads avgifter för förskola (gültig ab 1. Juli 2026, Beträge Juli–Dezember vorläufig), Västtrafik (Göteborg-Tarif und Aktion bis 2.12.2026), 1177 Västra Götaland (Patientavgifter, Frikort), 1177/TLV (Högkostnadsskydd Arzneimittel ab Juli 2026).</p>
+  <p class="stand">Stand der Beträge: <span data-stand></span>. Quellen: Göteborgs Stads avgifter för förskola (gültig ab 1. Juli 2026, Beträge Juli–Dezember vorläufig), Västtrafik (Göteborg-Tarif und Aktion bis 2.12.2026), 1177 Västra Götaland (Patientavgifter, Frikort), 1177/TLV (Högkostnadsskydd Arzneimittel ab Juli 2026).</p>
   <p>Mehr im Ratgeber: <a href="https://www.nordabenteuer.de/ratgeber/lebenshaltungskosten-schweden">Lebenshaltungskosten in Schweden</a> · <a href="https://www.nordabenteuer.de/ratgeber/mit-kindern-nach-goeteborg-auswandern">Mit Kindern nach Göteborg</a>. Beträge ändern sich jährlich; maßgeblich ist der Bescheid der Kommun.</p>
 </footer>
 </div>
 
 <script>
-var T = {
-  fribelopp: 10000,          // vom Bruttoeinkommen abgezogen, bevor der Prozentsatz greift
-  inkomsttak: 51560,         // höchstes anrechenbares Einkommen im Monat
-  pct: { klein: [0.03, 0.02, 0.01], gross: [0.02, 0.01, 0.01] },  // jüngstes Kind zuerst; 3–5 J. eine Stufe niedriger wegen allmän förskola
-  tak: { klein: [1547, 1031, 516], gross: [1031, 516, 516] },     // Höchstbeträge Göteborg ab 1.7.2026
-  vasttrafikGbgAktion: 305,  // Zone A, folkbokförd in Göteborg, halbiert bis 2.12.2026 (Västtrafik)
-  vasttrafikGbg: 750,        // Zone A, folkbokförd in Göteborg, regulär (Göteborgs Stad zahlt 140 kr zu)
-  vasttrafikAVoll: 890,      // Zone A ohne Göteborg-Rabatt
-  aktionEnde: '2026-12-02',  // letzter Verkaufstag der halbierten 30-Tage-Karte
-  vardcentral: 200, sjukskoterska: 50, specialist: 300, akuten: 400,
-  frikort: 1450,             // Högkostnadsskydd Arztbesuche, pro Jahr
-  lakemedel: 3800,           // Högkostnadsskydd Arzneimittel, pro Jahr
-  eurkurs: 11.12
-};
+var T = NAB_ZAHLEN.goeteborg;  // alle Zahlen in assets/zahlen.js
 
 var nf = new Intl.NumberFormat('de-DE');
 function kr(v){ return nf.format(Math.round(v)) + ' kr'; }
@@ -182,7 +169,7 @@ function forskola(brutto){
     var tak = T.tak[kid.alter][i];
     var raw = grund * pct;
     var fee = Math.min(raw, tak);
-    rows.push({rank:i+1, alter:kid.alter, fee:fee, note: raw > tak ? 'gedeckelt bei ' + kr(tak) : (pct*100).toFixed(0) + ' % von ' + kr(grund)});
+    rows.push({rank:i+1, alter:kid.alter, fee:fee, note: grund === 0 ? 'gebührenfrei: Einkommen bis ' + kr(T.fribelopp) : (raw > tak ? 'gedeckelt bei ' + kr(tak) : (pct*100).toFixed(0) + ' % von ' + kr(grund))});
     total += fee;
   });
   return {rows:rows, total:total, grund:grund};

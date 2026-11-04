@@ -1,5 +1,9 @@
 # werkzeuge.nordabenteuer.de
 
+**Zweisprachig seit 04.11.2026:** deutsch unter `/`, englisch unter `/en/`. Alle
+veränderlichen Zahlen stehen **nur** in `assets/zahlen.js` und gelten für beide
+Sprachen. Englische Quellen in `src/en/`, Paare und Texte in `build.py` (`TOOLS`, `T`).
+
 Statische Website mit den Web-Werkzeugen von nordabenteuer.de. Gehostet auf
 GitHub Pages, weil der Squarespace-Tarif kein JavaScript in Code-Blöcken erlaubt.
 

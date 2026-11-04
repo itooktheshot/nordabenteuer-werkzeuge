@@ -113,20 +113,13 @@ footer a{color:inherit}
 </div>
 
 <footer>
-  <p class="stand">Stand der Sätze und Gebühren: Oktober 2026. Quellen: Lantmäteriet (Stämpelskatt, Lagfart, Pantbrev), Skatteverket (fastighetsavgift).</p>
+  <p class="stand">Stand der Sätze und Gebühren: <span data-stand></span>. Quellen: Lantmäteriet (Stämpelskatt, Lagfart, Pantbrev), Skatteverket (fastighetsavgift).</p>
   <p>Mehr dazu im Ratgeber: <a href="https://www.nordabenteuer.de/ratgeber/staempelskatt-pantbrev-hauskauf-schweden">Stämpelskatt und Pantbrev</a> · <a href="https://www.nordabenteuer.de/ratgeber/hauskauf-schweden-ablauf">Hauskauf in Schweden, Schritt für Schritt</a>. Keine Steuer- oder Rechtsberatung; Sätze und Gebühren ändern sich.</p>
 </footer>
 </div>
 
 <script>
-var SATS = {
-  stampel: 0.015,        // Privatperson, Grund und Boden
-  pantbrev: 0.02,        // je neu ausgestelltem Pantbrev
-  lagfartAvgift: 825,    // Expeditionsavgift Lagfart
-  pantbrevAvgift: 375,   // Expeditionsavgift je Pantbrev
-  fastighetsavgiftSats: 0.0075,
-  fastighetsavgiftTak: 10425   // Einkommensjahr 2026
-};
+var SATS = NAB_ZAHLEN.kauf;  // alle Zahlen in assets/zahlen.js
 var nf = new Intl.NumberFormat('de-DE');
 var kr = function(v){ return nf.format(Math.round(v)) + ' kr'; };
 var state = { typ:'villa' };
@@ -173,7 +166,7 @@ function compute(){
     var fav = Math.min((tax || pris) * SATS.fastighetsavgiftSats, SATS.fastighetsavgiftTak);
     year.push({
       k:'Fastighetsavgift',
-      s:'0,75 % des Taxeringsvärde, gedeckelt bei ' + kr(SATS.fastighetsavgiftTak) + ' für das Einkommensjahr 2026.' + (tax ? '' : ' Ohne Taxeringsvärde mit dem Kaufpreis gerechnet — real meist deutlich niedriger.'),
+      s:'0,75 % des Taxeringsvärde, gedeckelt bei ' + kr(SATS.fastighetsavgiftTak) + ' für das Einkommensjahr ' + SATS.fastighetsavgiftJahr + '.' + (tax ? '' : ' Ohne Taxeringsvärde mit dem Kaufpreis gerechnet — real meist deutlich niedriger.'),
       v: kr(fav)
     });
     if(typ === 'tomt'){

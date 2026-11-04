@@ -1,0 +1,222 @@
+<title>Questions for the estate agent</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: schmale Steuerspalte oben, darunter die Liste in einer Lesespalte. Druckfreundlich. */
+:root{
+  --paper:#f2f0ec; --ink:#1d2328; --ink-soft:#5c666e; --rule:#d8d4cd;
+  --card:#ffffff; --accent:#8c3b2e; --accent-soft:#f0e2de; --flag:#8a6a1f; --flag-soft:#f3ebd6;
+  --font-display:"Newsreader",Georgia,serif; --font-ui:"IBM Plex Sans",system-ui,sans-serif; --font-data:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#15191c;--ink:#e7e4df;--ink-soft:#9aa3ab;--rule:#2c3338;--card:#1c2126;--accent:#d9816f;--accent-soft:#33211d;--flag:#d9b45e;--flag-soft:#2e2718;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#15191c;--ink:#e7e4df;--ink-soft:#9aa3ab;--rule:#2c3338;--card:#1c2126;--accent:#d9816f;--accent-soft:#33211d;--flag:#d9b45e;--flag-soft:#2e2718;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-ui);line-height:1.55;margin:0}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:clamp(28px,5vw,56px)}
+header{border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:22px}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.1;margin:0 0 .4em;text-wrap:balance;letter-spacing:-.01em}
+.lede{margin:0;max-width:62ch;color:var(--ink-soft);font-size:1.02rem}
+.controls{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:16px;margin-bottom:24px;display:grid;gap:14px}
+.eyebrow{display:block;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:.6em}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 8rem;font-family:var(--font-ui);font-size:.84rem;padding:.55em .5em;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:2px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:600}
+.seg button:focus-visible,.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.copy{font-family:var(--font-ui);font-size:.84rem;font-weight:500;padding:.55em 1em;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:2px;cursor:pointer;justify-self:start}
+.said{font-size:.8rem;color:var(--ink-soft);margin-left:.6em}
+section.grp{margin-bottom:26px}
+h2{font-family:var(--font-display);font-weight:600;font-size:1.22rem;margin:0 0 .15em;letter-spacing:-.01em}
+.why{margin:0 0 .9em;font-size:.86rem;color:var(--ink-soft)}
+ol.q{list-style:none;margin:0;padding:0;counter-reset:q}
+ol.q li{counter-increment:q;display:grid;grid-template-columns:2.1rem minmax(0,1fr);gap:4px 10px;padding:12px 0;border-bottom:1px solid var(--rule)}
+ol.q li:last-child{border-bottom:0}
+ol.q li::before{content:counter(q);font-family:var(--font-data);font-size:.82rem;color:var(--ink-soft);padding-top:.15em}
+ol.q .sv{font-weight:500;min-width:0}
+ol.q .de{grid-column:2;font-size:.88rem;color:var(--ink-soft);min-width:0}
+.flag{background:var(--flag-soft);border-left:3px solid var(--flag);padding:11px 13px;border-radius:2px;font-size:.87rem;margin-bottom:24px}
+.cta{background:var(--accent-soft);border:1px solid var(--accent);border-radius:3px;padding:17px;margin-top:8px}
+.cta p{margin:0 0 .55em;font-size:.93rem}.cta p:last-child{margin-bottom:0}
+.cta a{color:var(--accent);font-weight:600}
+footer{margin-top:30px;padding-top:18px;border-top:1px solid var(--rule);font-size:.8rem;color:var(--ink-soft)}
+footer a{color:inherit}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+
+<div class="wrap">
+<header>
+  <h1>Questions for the estate agent</h1>
+  <p class="lede">In Sweden the estate agent (mäklare) works for the seller, but has to answer you correctly — on what you ask. This list adapts to the type of property. Every question comes with the Swedish wording, so you can ask it in Swedish too.</p>
+</header>
+
+<div class="controls">
+  <div>
+    <span class="eyebrow">What kind of property is it?</span>
+    <div class="seg" id="typ" role="group" aria-label="Property type">
+      <button type="button" data-v="br" aria-pressed="true">Apartment (bostadsrätt)</button>
+      <button type="button" data-v="villa" aria-pressed="false">House</button>
+      <button type="button" data-v="fritid" aria-pressed="false">Holiday home</button>
+    </div>
+  </div>
+  <div>
+    <button class="copy" id="copy" type="button">Copy list</button>
+    <span class="said" id="said" role="status"></span>
+  </div>
+</div>
+
+<div class="flag" id="flag"></div>
+<div id="list"></div>
+
+<section class="cta">
+  <p><strong>What this list can’t do:</strong> make sense of the answers. “The association has 18,000 kr of debt per square metre” sounds like a number and is really a judgement call.</p>
+  <p>If you have the documents and want someone to read them: <a href="https://www.nordabenteuer.de/english/consulting#objektcheck">Property check, 149 €</a> — two pages in English, usually within two working days.</p>
+</section>
+
+<footer>More in the guide: <a href="https://www.nordabenteuer.de/english/articles/visning-questions-for-the-estate-agent">Questions for the viewing</a> · <a href="https://www.nordabenteuer.de/english/articles/undersokningsplikt-buyers-duty-to-inspect">The buyer’s duty to inspect</a> · <a href="https://www.nordabenteuer.de/english/articles/check-bostadsrattsforening-housing-association">Checking the housing association</a> · <a href="https://www.nordabenteuer.de/english/articles/budgivning-sweden-bidding-process">Bidding</a>. Not legal advice.</footer>
+</div>
+
+<script>
+var GROUPS = {
+  br: [
+    {h:'The housing association', why:'Its finances are your finances. Over the next ten years they matter more than the apartment itself.', q:[
+      ['Kan jag få föreningens senaste årsredovisning och stadgar?','Can I have the association’s latest annual report and statutes?'],
+      ['Hur stor är föreningens skuld per kvadratmeter?','How much debt does the association have per square metre?'],
+      ['När är föreningens lån bundna till, och till vilken ränta?','When do the association’s loans come up for renewal, and at what rate?'],
+      ['Finns en underhållsplan, och vad står närmast på tur?','Is there a maintenance plan, and what’s next on it?'],
+      ['Har avgiften höjts de senaste tre åren, och är en höjning beslutad?','Has the fee gone up in the last three years, and has an increase been decided?'],
+      ['Är föreningen äkta eller oäkta?','Is it a “genuine” (äkta) or “non-genuine” (oäkta) association? (This has tax consequences when you sell.)'],
+      ['Äger föreningen marken, eller är det tomträtt?','Does the association own the land, or is it on leased land (tomträtt)?']
+    ]},
+    {h:'The apartment', why:'The listing is the sales version. These questions go after what isn’t in it.', q:[
+      ['Vad ingår i avgiften — värme, vatten, bredband, kabel-tv?','What does the fee include — heating, water, broadband, cable TV?'],
+      ['Vilka renoveringar är gjorda, av vem, och finns kvitton?','What has been renovated, by whom, and are there receipts?'],
+      ['Är badrummet och köket fackmannamässigt renoverade?','Were the bathroom and kitchen renovated by professionals?'],
+      ['Finns det någon känd fukt- eller ljudproblematik i huset?','Are there any known damp or noise problems in the building?'],
+      ['Vad är boarea och vad är biarea i den här lägenheten?','What counts as living area and what as secondary area in this apartment?'],
+      ['Ingår förråd och eventuell parkering, eller köas det separat?','Are storage and parking included, or is there a separate queue for them?']
+    ]},
+    {h:'Buying and timing', why:'This is where you find out whether you can stay calm during the bidding.', q:[
+      ['Hur många har anmält intresse, och har bud lagts?','How many people have registered interest, and have any bids been made?'],
+      ['Vilka villkor ställer föreningen för medlemskap?','What conditions does the association set for membership?'],
+      ['Vilka avgifter tar föreningen vid överlåtelse och pantsättning?','What fees does the association charge for transfer and pledging?'],
+      ['När är tillträde tänkt?','When is the handover planned?']
+    ]}
+  ],
+  villa: [
+    {h:'The building', why:'The duty to inspect is yours: anything you could have spotted becomes your problem later.', q:[
+      ['Finns en överlåtelsebesiktning, och får jag läsa den?','Is there a pre-sale inspection report, and may I read it?'],
+      ['Vilken grundkonstruktion har huset — krypgrund, platta på mark eller källare?','What foundation does the house have — crawl space, slab on ground or basement?'],
+      ['Har det funnits fukt i grunden eller på vinden?','Has there been damp in the foundation or the attic?'],
+      ['När byttes taket senast, och vilket material?','When was the roof last replaced, and with what material?'],
+      ['När drogs elen om senast, och finns jordfelsbrytare?','When was the wiring last renewed, and is there a residual-current device?'],
+      ['Vilka renoveringar är gjorda med bygglov, och finns slutbesked?','Which alterations had building permits, and is there a final approval?']
+    ]},
+    {h:'Systems and running costs', why:'The running costs in the listing are the seller’s usage, not yours.', q:[
+      ['Hur värms huset upp, och vad kostade uppvärmningen förra året?','How is the house heated, and what did heating cost last year?'],
+      ['Är vatten och avlopp kommunalt eller enskilt?','Are water and sewage municipal or private?'],
+      ['Om enskilt avlopp: när godkändes anläggningen senast av kommunen?','If private sewage: when did the municipality last approve the system?'],
+      ['Om egen brunn: finns ett vattenprov, och hur gammalt är det?','If there’s a private well: is there a water test, and how old is it?'],
+      ['Vad står i energideklarationen?','What does the energy declaration say?'],
+      ['Ingår huset i en samfällighet, och vad kostar den?','Is the house part of a joint property association (samfällighet), and what does it cost?']
+    ]},
+    {h:'Land and legal', why:'Whatever is attached to the land moves with it.', q:[
+      ['Hur mycket pantbrev finns uttagna i fastigheten?','How much in mortgage deeds (pantbrev) is registered on the property?'],
+      ['Vad är taxeringsvärdet?','What is the tax value (taxeringsvärde)?'],
+      ['Finns servitut, ledningsrätter eller andra belastningar?','Are there easements, utility rights or other encumbrances?'],
+      ['Berörs tomten av strandskydd?','Is the plot affected by shoreline protection (strandskydd)?'],
+      ['Finns detaljplan, och vad får byggas på granntomterna?','Is there a local development plan, and what can be built on the neighbouring plots?'],
+      ['När sotades och brandskyddskontrollerades eldstaden senast?','When were the fireplace and chimney last swept and fire-safety checked?']
+    ]}
+  ],
+  fritid: [
+    {h:'Use through the year', why:'The difference between a summer house and a year-round home can easily cost hundreds of thousands of kronor.', q:[
+      ['Är huset byggt för åretruntboende eller för sommarbruk?','Was the house built for year-round living or for summer use?'],
+      ['Är vattnet avstängt vintertid, och är ledningarna frostsäkra?','Is the water turned off in winter, and are the pipes frost-proof?'],
+      ['Hur är huset isolerat, och vad kostar det att värma i februari?','How is the house insulated, and what does it cost to heat in February?'],
+      ['Plogas vägen fram till huset vintertid, och vem betalar?','Is the road to the house ploughed in winter, and who pays?']
+    ]},
+    {h:'Location and access', why:'With a holiday home, getting there is part of the property.', q:[
+      ['Vem äger och underhåller vägen fram till fastigheten?','Who owns and maintains the road to the property?'],
+      ['Finns vägsamfällighet, och vad är årsavgiften?','Is there a road association, and what is the yearly fee?'],
+      ['Berörs tomten av strandskydd, och vad får göras närmast vattnet?','Does shoreline protection apply, and what is allowed close to the water?'],
+      ['Finns bryggrätt eller båtplats, och följer den med?','Is there a right to a jetty or a boat mooring, and does it come with the sale?']
+    ]},
+    {h:'Systems and legal', why:'The same questions as for a house — the installations are just often older.', q:[
+      ['Är vatten och avlopp kommunalt eller enskilt?','Are water and sewage municipal or private?'],
+      ['Om enskilt avlopp: när godkändes anläggningen senast?','If private sewage: when was the system last approved?'],
+      ['Finns en överlåtelsebesiktning?','Is there a pre-sale inspection report?'],
+      ['Hur mycket pantbrev finns uttagna?','How much in mortgage deeds is registered?'],
+      ['Får huset hyras ut, och finns begränsningar?','May the house be rented out, and are there restrictions?']
+    ]}
+  ]
+};
+
+var nf0 = function(v){ return new Intl.NumberFormat('en-GB').format(v); };
+var FLAGS = {
+  br:'The most important question is the first one: the <strong>annual report and statutes</strong>. The agent has to hand both over, both are public — and they say more about the next ten years than any viewing.',
+  villa:'For a house, the <strong>buyer’s duty to inspect</strong> (undersökningsplikt) applies: anything a careful inspection would have found, you can’t complain about later. Your own inspection (besiktning) costs roughly ' + nf0(NAB_ZAHLEN.besiktning.von) + ' to ' + nf0(NAB_ZAHLEN.besiktning.bis) + ' kr and is the cheapest insurance in the whole purchase.',
+  fritid:'With a holiday home, the most expensive surprise is almost always <strong>sewage</strong>. A system that isn’t approved has to be replaced, and that quickly costs more than a new kitchen.'
+};
+
+var state = 'br';
+
+function render(){
+  var list = document.getElementById('list');
+  list.innerHTML = '';
+  document.getElementById('flag').innerHTML = FLAGS[state];
+  GROUPS[state].forEach(function(g){
+    var sec = document.createElement('section'); sec.className = 'grp';
+    var h = document.createElement('h2'); h.textContent = g.h;
+    var w = document.createElement('p'); w.className = 'why'; w.textContent = g.why;
+    var ol = document.createElement('ol'); ol.className = 'q';
+    g.q.forEach(function(pair){
+      var li = document.createElement('li');
+      var sv = document.createElement('span'); sv.className = 'sv'; sv.lang = 'sv'; sv.textContent = pair[0];
+      var de = document.createElement('span'); de.className = 'de'; de.textContent = pair[1];
+      li.append(sv, de); ol.append(li);
+    });
+    sec.append(h, w, ol); list.append(sec);
+  });
+}
+
+function asText(){
+  var out = ['Questions for the estate agent — ' + document.querySelector('#typ button[aria-pressed=true]').textContent, ''];
+  GROUPS[state].forEach(function(g){
+    out.push(g.h.toUpperCase());
+    g.q.forEach(function(p, i){ out.push((i+1) + '. ' + p[0]); out.push('   ' + p[1]); });
+    out.push('');
+  });
+  out.push('werkzeuge.nordabenteuer.de/en/');
+  return out.join('\n');
+}
+
+Array.prototype.forEach.call(document.querySelectorAll('#typ button'), function(b){
+  b.addEventListener('click', function(){
+    state = b.getAttribute('data-v');
+    Array.prototype.forEach.call(document.querySelectorAll('#typ button'), function(o){
+      o.setAttribute('aria-pressed', String(o === b));
+    });
+    document.getElementById('said').textContent = '';
+    render();
+  });
+});
+
+document.getElementById('copy').addEventListener('click', function(){
+  var said = document.getElementById('said');
+  var text = asText();
+  function fallback(){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.append(ta); ta.select();
+    said.textContent = 'Selected — now press Ctrl/Cmd + C.';
+    setTimeout(function(){ ta.remove(); }, 15000);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){
+      said.textContent = 'Copied.';
+    })['catch'](fallback);
+  } else { fallback(); }
+});
+
+render();
+</script>

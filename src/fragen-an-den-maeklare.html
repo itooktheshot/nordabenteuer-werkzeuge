@@ -150,9 +150,10 @@ var GROUPS = {
   ]
 };
 
+var nf0 = function(v){ return new Intl.NumberFormat('de-DE').format(v); };
 var FLAGS = {
   br:'Die wichtigste Frage ist die erste: <strong>Årsredovisning und Stadgar</strong>. Beides muss der Mäklare herausgeben, beides ist öffentlich — und beides sagt mehr über die nächsten zehn Jahre als jede Besichtigung.',
-  villa:'Beim Haus gilt die <strong>Undersökningsplikt</strong>: Was du bei sorgfältiger Prüfung hättest entdecken können, kannst du später nicht mehr reklamieren. Eine eigene Besiktning kostet rund 9.600 bis 10.800 kr und ist die billigste Versicherung in diesem Kauf.',
+  villa:'Beim Haus gilt die <strong>Undersökningsplikt</strong>: Was du bei sorgfältiger Prüfung hättest entdecken können, kannst du später nicht mehr reklamieren. Eine eigene Besiktning kostet rund ' + nf0(NAB_ZAHLEN.besiktning.von) + ' bis ' + nf0(NAB_ZAHLEN.besiktning.bis) + ' kr und ist die billigste Versicherung in diesem Kauf.',
   fritid:'Beim Ferienhaus ist die teuerste Überraschung fast immer <strong>Abwasser</strong>. Eine nicht genehmigte Kläranlage muss ersetzt werden, und das kostet schnell mehr als die Küche.'
 };
 
