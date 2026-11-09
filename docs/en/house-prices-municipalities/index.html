@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>House prices by municipality – Tools by nordabenteuer.de</title>
+<meta name="description" content="Average house prices in Sweden by municipality: all 290 municipalities with the mean price, change since 2020 and number of sales. Year-round and holiday houses shown separately, in kronor and euros. Source: SCB.">
+<link rel="canonical" href="https://werkzeuge.nordabenteuer.de/en/house-prices-municipalities/">
+<link rel="alternate" hreflang="de" href="https://werkzeuge.nordabenteuer.de/hauspreise-kommunen/">
+<link rel="alternate" hreflang="en" href="https://werkzeuge.nordabenteuer.de/en/house-prices-municipalities/">
+<link rel="alternate" hreflang="x-default" href="https://werkzeuge.nordabenteuer.de/hauspreise-kommunen/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="nordabenteuer.de">
+<meta property="og:title" content="House prices by municipality – Tools by nordabenteuer.de">
+<meta property="og:description" content="Average house prices in Sweden by municipality: all 290 municipalities with the mean price, change since 2020 and number of sales. Year-round and holiday houses shown separately, in kronor and euros. Source: SCB.">
+<meta property="og:url" content="https://werkzeuge.nordabenteuer.de/en/house-prices-municipalities/">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#FFF6E6">
+<link rel="preload" href="/assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/nab.css?v=fa87078d">
+<script src="/assets/zahlen.js?v=49c510e2"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "House prices by municipality", "url": "https://werkzeuge.nordabenteuer.de/en/house-prices-municipalities/", "description": "Average house prices in Sweden by municipality: all 290 municipalities with the mean price, change since 2020 and number of sales. Year-round and holiday houses shown separately, in kronor and euros. Source: SCB.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "inLanguage": "en", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "publisher": {"@type": "Organization", "name": "nordabenteuer.de", "url": "https://www.nordabenteuer.de/"}, "author": {"@type": "Person", "name": "Sebastian Schiefner"}}</script><script src="/assets/kommunpreise.js?v=803c213e"></script>
+</head>
+<body><div class="nab-head"><div class="in">
+  <a class="nab-mark" href="https://www.nordabenteuer.de/english/welcome" aria-label="nordabenteuer.de">nordabenteuer<b>.</b> <small>Tools</small></a>
+  <button class="nab-burger" type="button" aria-expanded="false" aria-controls="nab-nav"><span></span>Menu</button>
+  <nav class="nab-nav" id="nab-nav" aria-label="Main navigation">
+    <a href="https://www.nordabenteuer.de/english/welcome">Home</a>
+    <a href="https://www.nordabenteuer.de/english/articles">Articles</a>
+    <a href="/en/" aria-current="page">Tools</a>
+    <a href="https://www.nordabenteuer.de/english/real-estate">Real Estate</a>
+    <a href="https://www.nordabenteuer.de/english/consulting">Consulting</a>
+    <a href="https://www.nordabenteuer.de/english/about-me">About</a>
+    <a href="https://www.nordabenteuer.de/english/contact">Contact</a>
+    <a class="nab-lang" href="/hauspreise-kommunen/" lang="de" hreflang="de" aria-label="Dieses Werkzeug auf Deutsch">DE</a>
+  </nav>
+</div></div>
+<script>(function(){var d=document.documentElement;d.className+=' js';var b=document.querySelector('.nab-burger'),n=document.getElementById('nab-nav');b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));n.classList.toggle('open',!o);});})();</script>
+<main>
+<style>
+/* Layout: filters left, table right; side by side from 900px, stacked below. */
+.wrap{max-width:1060px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:clamp(28px,5vw,56px)}
+main header{border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:26px}
+main h1{font-family:var(--font-display);font-weight:800;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.1;margin:0 0 .4em;text-wrap:balance;letter-spacing:-.01em}
+.lede{margin:0;max-width:62ch;color:var(--ink-soft);font-size:1.02rem}
+.cols{display:grid;grid-template-columns:minmax(0,1fr);gap:26px}
+@media(min-width:900px){.cols{grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:34px;align-items:start}}
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:18px}
+.eyebrow{display:block;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:.8em}
+.field{display:grid;gap:5px;margin-bottom:15px;min-width:0}
+.field label{font-size:.86rem;font-weight:500}
+.field .sub{font-size:.78rem;color:var(--ink-soft)}
+.kp-in{width:100%;font-family:var(--font-data);font-size:.92rem;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:2px;padding:.55em .6em;min-width:0}
+.kp-in:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+main button{flex:1 1 7rem;font-family:var(--font-ui);font-size:.84rem;padding:.55em .5em;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:2px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:600}
+main h2{font-family:var(--font-display);font-weight:600;font-size:1.25rem;margin:0 0 .7em;letter-spacing:-.01em}
+.stack{display:grid;gap:22px}
+.kp-sum{display:grid;gap:3px 14px;grid-template-columns:1fr auto;align-items:baseline;background:var(--accent-soft);border:1px solid var(--accent);border-radius:3px;padding:13px 15px}
+.kp-sum .k{font-size:.9rem}
+.kp-sum .k small{display:block;color:var(--ink-soft);font-size:.78rem}
+.kp-sum .v{font-family:var(--font-data);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.kp-sum .v em{font-style:normal;display:block;font-size:.76rem;font-weight:400;color:var(--ink-soft)}
+.kp-wrap{border:1px solid var(--rule);border-radius:3px;background:var(--card);overflow:hidden}
+.kp-table{width:100%;border-collapse:collapse;font-size:.88rem}
+.kp-table caption{text-align:left;padding:11px 13px;font-size:.8rem;color:var(--ink-soft);border-bottom:1px solid var(--rule)}
+.kp-table th,.kp-table td{padding:9px 13px;text-align:right;border-bottom:1px solid var(--rule);white-space:nowrap}
+.kp-table th:first-child,.kp-table td:first-child{text-align:left;white-space:normal}
+.kp-table thead th{position:sticky;top:0;background:var(--card);font-size:.76rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;padding:0}
+.kp-table thead button{display:block;width:100%;border:0;background:none;color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;text-align:right;padding:10px 13px;cursor:pointer;border-radius:0}
+.kp-table thead th:first-child button{text-align:left}
+.kp-table thead button[aria-sort]{color:var(--ink)}
+.kp-table thead button .ar{font-family:var(--font-data)}
+.kp-table td.num{font-family:var(--font-data);font-variant-numeric:tabular-nums}
+.kp-table td .eur{display:block;font-size:.76rem;color:var(--ink-soft);font-weight:400}
+.kp-table tbody tr:last-child td{border-bottom:0}
+.kp-table tbody tr:nth-child(even){background:color-mix(in srgb,var(--ink) 3%,transparent)}
+.kp-up{color:var(--accent);font-weight:500}
+.kp-na{color:var(--ink-soft)}
+@media(max-width:560px){
+  .kp-table{font-size:.84rem}
+  .kp-table th,.kp-table td{padding:8px 10px}
+  .kp-table thead button{padding:9px 10px}
+  .kp-col-d{display:none}
+}
+.flag{background:var(--flag-soft);border-left:3px solid var(--flag);padding:11px 13px;border-radius:2px;font-size:.87rem}
+.flag p{margin:0 0 .5em}.flag p:last-child{margin-bottom:0}
+.cta{background:var(--accent-soft);border:1px solid var(--accent);border-radius:3px;padding:17px}
+.cta p{margin:0 0 .55em;font-size:.93rem}.cta p:last-child{margin-bottom:0}
+.cta a{color:var(--accent);font-weight:600}
+main footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--rule);font-size:.8rem;color:var(--ink-soft)}
+main footer a{color:inherit}
+.stand{font-family:var(--font-data);font-size:.74rem}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>House prices by municipality</h1>
+  <p class="lede">What a house in Sweden costs on average — for all 290 municipalities, from Statistics Sweden's official figures. Plus how prices moved since 2020 and how many houses actually change hands there. A low average is worth little if only eight houses are sold in a year.</p>
+</header>
+
+<div class="cols">
+  <form class="panel" id="form" novalidate onsubmit="return false">
+    <span class="eyebrow">Narrow it down</span>
+
+    <div class="field">
+      <label for="q">Find a municipality</label>
+      <input class="kp-in" type="search" id="q" placeholder="Göteborg, Tanum, Värmdö …" autocomplete="off" spellcheck="false">
+      <span class="sub" id="qhint"></span>
+    </div>
+
+    <div class="field">
+      <label for="lan">County (län)</label>
+      <select class="kp-in" id="lan"></select>
+    </div>
+
+    <div class="field">
+      <label>Property type</label>
+      <div class="seg" role="group" aria-label="Property type">
+        <button type="button" id="b-perm" aria-pressed="true">Year-round house</button>
+        <button type="button" id="b-frit" aria-pressed="false">Holiday house</button>
+      </div>
+      <span class="sub">Statistics Sweden calls the first <em>permanentbostad</em> (excluding tomträtt) and the second <em>fritidshus</em>.</span>
+    </div>
+
+    <div class="field">
+      <label for="kurs">Exchange rate for the euro column</label>
+      <input class="kp-in" type="number" id="kurs" min="1" max="30" step="0.001" inputmode="decimal">
+      <span class="sub">Kronor per euro. Pre-filled with the ECB reference rate of <span id="kursdatum"></span> — look up today's rate and overwrite it.</span>
+    </div>
+
+    <p class="sub" style="margin:0">Everything is calculated here in your browser. The figures sit in a file on this page; no other website is contacted.</p>
+  </form>
+
+  <div class="stack">
+    <div>
+      <h2 id="sumtitle">All of Sweden</h2>
+      <div class="kp-sum">
+        <span class="k">Average price <span id="sum-jahr"></span><small id="sum-art"></small></span>
+        <span class="v" id="sum-p">–<em id="sum-peur"></em></span>
+        <span class="k">Sales <span id="sum-jahr2"></span><small>completed purchases, not listings</small></span>
+        <span class="v" id="sum-n">–</span>
+        <span class="k">Against <span id="sum-vorjahr"></span><small>change in the average price</small></span>
+        <span class="v" id="sum-d">–</span>
+      </div>
+    </div>
+
+    <div class="kp-wrap">
+      <table class="kp-table" id="tbl">
+        <caption id="cap">All municipalities</caption>
+        <thead>
+          <tr>
+            <th scope="col"><button type="button" data-s="namn">Municipality <span class="ar" aria-hidden="true"></span></button></th>
+            <th scope="col"><button type="button" data-s="p">Avg price <span class="ar" aria-hidden="true"></span></button></th>
+            <th scope="col" class="kp-col-d"><button type="button" data-s="d">Since <span id="th-vorjahr"></span> <span class="ar" aria-hidden="true"></span></button></th>
+            <th scope="col" class="kp-col-n"><button type="button" data-s="n">Sales <span class="ar" aria-hidden="true"></span></button></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+
+    <div class="flag">
+      <p><strong>How to read the average.</strong> It is the mean of all purchases in a year, not the median — a single manor house visibly lifts a small municipality. Where the sales column shows a low number, the average is correspondingly shaky — below roughly fifteen sales a year I would read it as a direction, not as a price. That is why the sales column stays visible on a phone and the change column gives way instead.</p>
+      <p>The figure is the <em>köpeskilling</em>, the purchase price itself. What comes on top — stamp duty, mortgage deeds, the registration fee — is worked out by the <a href="/en/buying-costs-sweden/">buying costs page</a>. Running costs depend on the house far more than on the municipality.</p>
+    </div>
+
+    <div class="cta">
+      <p>Found a municipality that fits? <a href="https://www.nordabenteuer.de/english/articles/buying-a-house-in-sweden-step-by-step">The process of buying a house</a> explains what comes next — and why Sweden has <a href="https://www.nordabenteuer.de/english/articles/buying-property-sweden-no-notary">no notary</a>.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p class="stand">Source: <a href="https://www.statistikdatabasen.scb.se/pxweb/en/ssd/START__BO__BO0501__BO0501B/FastprisSHRegionAr/" rel="noopener">Statistics Sweden (SCB), Statistical Database, table &bdquo;Sold one- or two-dwelling buildings by region and type of property&ldquo;</a> (BO0501B). <span id="standtext"></span> SCB updates the annual figures in early June; the next release is <span id="nextupd"></span>. Exchange rate: ECB reference rate, <span id="kursfoot"></span>. Not legal, tax or investment advice.</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var D = window.NAB_KOMMUNPREISE;
+  var KURS = { wert: 11.026, datum: "06.11.2026" };   // ECB reference rate EUR/SEK
+  var $ = function(id){ return document.getElementById(id); };
+
+  var state = { q:"", lan:"", art:"perm", sort:"namn", dir:1, kurs:KURS.wert };
+
+  var nf0 = new Intl.NumberFormat("en-GB",{maximumFractionDigits:0});
+  var nf1 = new Intl.NumberFormat("en-GB",{maximumFractionDigits:1});
+
+  // tkr -> kronor -> text
+  function sek(tkr){ return tkr == null ? null : nf0.format(tkr*1000) + " kr"; }
+  function eur(tkr){
+    if (tkr == null || !state.kurs) return null;
+    return "≈ " + nf0.format(tkr*1000/state.kurs) + " €";
+  }
+  function pct(neu, alt){
+    if (neu == null || alt == null || !alt) return null;
+    return (neu>=alt?"+":"−") + nf1.format(Math.abs((neu/alt-1)*100)) + " %";
+  }
+
+  var K = { kod:0, namn:1, n:2, p:3, p0:4, fn:5, fp:6 };
+  function val(row, feld){
+    if (state.art === "perm") return row[feld === "p" ? K.p : feld === "n" ? K.n : K.p0];
+    return row[feld === "p" ? K.fp : feld === "n" ? K.fn : null];
+  }
+  // SCB returns no 2020 mean for holiday houses in this query -> no change column.
+  function hatDelta(){ return state.art === "perm"; }
+
+  function liste(){
+    var out = [];
+    var q = state.q.trim().toLowerCase();
+    for (var i=0;i<D.kommuner.length;i++){
+      var r = D.kommuner[i];
+      if (state.lan && r[K.kod].slice(0,2) !== state.lan) continue;
+      if (q && r[K.namn].toLowerCase().indexOf(q) === -1) continue;
+      out.push(r);
+    }
+    var s = state.sort, dir = state.dir;
+    out.sort(function(a,b){
+      var av, bv;
+      if (s === "namn") return a[K.namn].localeCompare(b[K.namn],"sv") * dir;
+      if (s === "d"){
+        av = hatDelta() && val(a,"p") && val(a,"p0") ? val(a,"p")/val(a,"p0") : -1;
+        bv = hatDelta() && val(b,"p") && val(b,"p0") ? val(b,"p")/val(b,"p0") : -1;
+      } else { av = val(a,s); bv = val(b,s); }
+      if (av == null) av = -1; if (bv == null) bv = -1;
+      if (av === bv) return a[K.namn].localeCompare(b[K.namn],"sv");
+      return (av - bv) * dir;
+    });
+    return out;
+  }
+
+  function zeichneKopf(){
+    var btns = $("tbl").querySelectorAll("thead button");
+    for (var i=0;i<btns.length;i++){
+      var b = btns[i], ar = b.querySelector(".ar");
+      var aktiv = b.getAttribute("data-s") === state.sort;
+      if (aktiv){
+        b.setAttribute("aria-sort", state.dir === 1 ? "ascending" : "descending");
+        ar.textContent = state.dir === 1 ? "↑" : "↓";
+      } else {
+        b.removeAttribute("aria-sort");
+        ar.textContent = "";
+      }
+      if (b.getAttribute("data-s") === "d") b.disabled = !hatDelta();
+    }
+  }
+
+  function zeichne(){
+    var rows = liste(), html = [];
+    for (var i=0;i<rows.length;i++){
+      var r = rows[i], p = val(r,"p"), n = val(r,"n");
+      var d = hatDelta() ? pct(p, val(r,"p0")) : null;
+      html.push(
+        "<tr><th scope=\"row\">" + r[K.namn] + "</th>" +
+        "<td class=\"num\">" + (p == null ? "<span class=\"kp-na\">no figure</span>"
+            : sek(p) + "<span class=\"eur\">" + (eur(p) || "") + "</span>") + "</td>" +
+        "<td class=\"num kp-col-d\">" + (d == null ? "<span class=\"kp-na\">–</span>"
+            : "<span class=\"kp-up\">" + d + "</span>") + "</td>" +
+        "<td class=\"num\">" + (n == null ? "<span class=\"kp-na\">–</span>" : nf0.format(n)) + "</td></tr>"
+      );
+    }
+    $("rows").innerHTML = html.join("") ||
+      "<tr><td colspan=\"4\">Keine Kommune gefunden. Schreibweise prüfen — SCB führt die schwedischen Namen, also Göteborg, Malmö, Värmdö.</td></tr>";
+    $("cap").textContent = rows.length === D.kommuner.length
+      ? "All " + rows.length + " municipalities"
+      : rows.length + (rows.length === 1 ? " municipality" : " municipalities");
+    $("qhint").textContent = state.q.trim() ? rows.length + (rows.length === 1 ? " match" : " matches") : "";
+    zeichneSumme(rows);
+    zeichneKopf();
+  }
+
+  function zeichneSumme(rows){
+    var g, titel;
+    if (state.lan){ g = D.lan[state.lan]; titel = g.namn; }
+    else { g = D.riket; titel = "All of Sweden"; }
+    var p  = state.art === "perm" ? g.p  : g.fp;
+    var p0 = state.art === "perm" ? g.p0 : null;
+    var n  = state.art === "perm" ? g.n  : g.fn;
+    $("sumtitle").textContent = titel;
+    $("sum-p").firstChild.nodeValue = sek(p) || "no figure";
+    $("sum-peur").textContent = eur(p) || "";
+    $("sum-n").textContent = n == null ? "–" : nf0.format(n);
+    var d = p0 ? pct(p, p0) : null;
+    $("sum-d").textContent = d || "–";
+    $("sum-art").textContent = state.art === "perm" ? "year-round house (permanentbostad)" : "holiday house (fritidshus)";
+    if (rows && state.q.trim()) $("cap").textContent += " — filtered";
+  }
+
+  function init(){
+    // county select
+    var opt = ['<option value="">All counties</option>'];
+    var kods = Object.keys(D.lan).sort(function(a,b){
+      return D.lan[a].namn.localeCompare(D.lan[b].namn,"sv");
+    });
+    for (var i=0;i<kods.length;i++) opt.push('<option value="'+kods[i]+'">'+D.lan[kods[i]].namn+'</option>');
+    $("lan").innerHTML = opt.join("");
+
+    $("kurs").value = KURS.wert;
+    $("kursdatum").textContent = KURS.datum;
+    $("kursfoot").textContent = KURS.datum;
+    $("sum-jahr").textContent = D.jahr;
+    $("sum-jahr2").textContent = D.jahr;
+    $("sum-vorjahr").textContent = D.vorjahr;
+    $("th-vorjahr").textContent = D.vorjahr;
+    $("standtext").textContent = D.stand.en + ".";
+    $("nextupd").textContent = D.quelle.naechstesUpdate.en;
+
+    $("q").addEventListener("input", function(){ state.q = this.value; zeichne(); });
+    $("lan").addEventListener("change", function(){ state.lan = this.value; zeichne(); });
+    $("kurs").addEventListener("input", function(){
+      var v = parseFloat(this.value);
+      state.kurs = (isFinite(v) && v > 0) ? v : 0;
+      zeichne();
+    });
+    $("b-perm").addEventListener("click", function(){ setArt("perm"); });
+    $("b-frit").addEventListener("click", function(){ setArt("frit"); });
+
+    var btns = $("tbl").querySelectorAll("thead button");
+    for (var j=0;j<btns.length;j++) btns[j].addEventListener("click", function(){
+      var s = this.getAttribute("data-s");
+      if (state.sort === s) state.dir = -state.dir;
+      else { state.sort = s; state.dir = (s === "namn") ? 1 : -1; }
+      zeichne();
+    });
+
+    zeichne();
+  }
+
+  function setArt(a){
+    state.art = a;
+    $("b-perm").setAttribute("aria-pressed", a === "perm" ? "true" : "false");
+    $("b-frit").setAttribute("aria-pressed", a === "frit" ? "true" : "false");
+    if (!hatDelta() && state.sort === "d"){ state.sort = "p"; state.dir = -1; }
+    zeichne();
+  }
+
+  if (D && D.kommuner) init();
+})();
+</script>
+
+</main>
+<div class="nab-more"><div class="in">
+  <h2>More tools</h2>
+  <ul><li><a href="/en/read-a-swedish-listing/">Read a Swedish listing</a></li><li><a href="/en/buying-costs-sweden/">Buying costs in Sweden</a></li><li><a href="/en/questions-for-the-estate-agent/">Questions for the estate agent</a></li><li><a href="/en/authorities-order-sweden/">Swedish authorities: what comes first</a></li><li><a href="/en/fixed-costs-gothenburg/">Fixed costs in Gothenburg</a></li></ul>
+</div></div><div class="nab-foot"><div class="in">
+  <div>
+    <p class="mark">nordabenteuer<b>.</b></p>
+    <p>A guide to moving to Sweden and buying a home there — from someone who has done both.</p>
+    <a class="btn" href="https://www.nordabenteuer.de/english/consulting">Specific questions? Let’s talk.</a>
+  </div>
+  <div>
+    <h3>Tools</h3>
+    <ul><li><a href="/en/read-a-swedish-listing/">Read a Swedish listing</a></li><li><a href="/en/buying-costs-sweden/">Buying costs in Sweden</a></li><li><a href="/en/questions-for-the-estate-agent/">Questions for the estate agent</a></li><li><a href="/en/authorities-order-sweden/">Swedish authorities: what comes first</a></li><li><a href="/en/fixed-costs-gothenburg/">Fixed costs in Gothenburg</a></li><li><a href="/en/house-prices-municipalities/">House prices by municipality</a></li></ul>
+  </div>
+  <div>
+    <h3>nordabenteuer.de</h3>
+    <ul><li><a href="https://www.nordabenteuer.de/english/articles">Articles — all guides</a></li><li><a href="https://www.nordabenteuer.de/english/real-estate">Buying property in Sweden</a></li><li><a href="https://www.nordabenteuer.de/english/consulting">Consulting and property check</a></li><li><a href="https://www.nordabenteuer.de/english/contact">Contact</a></li></ul>
+  </div>
+  <div class="legal">
+    <span>All tools calculate in your browser. Nothing is stored, uploaded or fetched from other websites. Not legal or tax advice.</span>
+    <span><a href="https://www.nordabenteuer.de/impressum">Legal notice</a> · <a href="https://www.nordabenteuer.de/datenschutz">Privacy</a> · © 2026 Sebastian Schiefner</span>
+  </div>
+</div></div>
+<script>(function(){var s=(window.NAB_ZAHLEN||{}).stand;if(!s)return;document.querySelectorAll('[data-stand]').forEach(function(e){e.textContent=s['en'];});})();</script>
+</body>
+</html>
