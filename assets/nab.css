@@ -87,8 +87,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .nab-card.c{background:var(--nab-lilac)}
 .nab-card.d{background:#CFE0F2}
 .nab-card.e{background:#CFEBD9}
-.nab-card.a,.nab-card.b,.nab-card.c,.nab-card.d,.nab-card.e{border-color:transparent}
-.nab-card.a p,.nab-card.b p,.nab-card.c p,.nab-card.d p,.nab-card.e p{color:var(--ink)}
+.nab-card.f{background:#F6DCC8}
+.nab-card.a,.nab-card.b,.nab-card.c,.nab-card.d,.nab-card.e,.nab-card.f{border-color:transparent}
+.nab-card.a p,.nab-card.b p,.nab-card.c p,.nab-card.d p,.nab-card.e p,.nab-card.f p{color:var(--ink)}
 .nab-promise{margin:30px 0 0;padding:18px 20px;border:1px solid var(--ink);border-radius:6px;background:var(--card);display:grid;gap:6px;font-size:.93rem}
 .nab-promise strong{font-family:var(--font-display);font-weight:700}
 .nab-about{margin:26px 0 0;font-size:.93rem;color:var(--ink-soft);max-width:64ch}
