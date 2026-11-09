@@ -27,6 +27,7 @@ def ver(name):  # Cache-Busting: Versionsparameter aus dem Dateiinhalt
 
 
 CSSV, ZAHLENV = ver("nab.css"), ver("zahlen.js")
+KOMMUNV = ver("kommunpreise.js")  # nur die Hauspreis-Seite laedt diese Datei
 
 # Jedes Werkzeug in beiden Sprachen. Die Paare bestimmen hreflang und den Sprachumschalter.
 TOOLS = [
@@ -75,6 +76,15 @@ TOOLS = [
                  title="Fixed costs in Gothenburg",
                  card="Preschool fees, Västtrafik, the caps on healthcare costs — what a household in Gothenburg pays every month, in kronor and euros.",
                  desc="Calculate monthly fixed costs in Gothenburg: preschool fees (from July 2026), Västtrafik zone A, healthcare and medicine caps. With euro conversion.")),
+    dict(color="f", data="kommunpreise.js",
+         de=dict(slug="hauspreise-kommunen", src="hauspreise-kommunen.html", kick="Immobilien",
+                 title="Hauspreise je Kommune",
+                 card="Durchschnittspreise für Häuser und Ferienhäuser in allen 290 Kommunen, aus den amtlichen SCB-Zahlen — mit der Entwicklung seit 2020 und der Zahl der Verkäufe.",
+                 desc="Durchschnittliche Hauspreise in Schweden je Kommune: alle 290 Kommunen mit Mittelwert, Veränderung seit 2020 und Anzahl der Verkäufe. Wohnhaus und Ferienhaus getrennt, in Kronen und Euro. Quelle SCB."),
+         en=dict(slug="house-prices-municipalities", src="en/house-prices-municipalities.html", kick="Property",
+                 title="House prices by municipality",
+                 card="Average prices for houses and holiday houses in all 290 municipalities, from official SCB figures — with the change since 2020 and the number of sales.",
+                 desc="Average house prices in Sweden by municipality: all 290 municipalities with the mean price, change since 2020 and number of sales. Year-round and holiday houses shown separately, in kronor and euros. Source: SCB.")),
 ]
 
 PREFIX = {"de": "/", "en": "/en/"}
@@ -99,7 +109,7 @@ T = {  # Texte für Kopf, Fuß, Übersicht — je Sprache
         foot_legal="Alle Werkzeuge rechnen im Browser. Nichts wird gespeichert, hochgeladen oder von fremden Seiten abgerufen. Keine Rechts- oder Steuerberatung.",
         imprint="Impressum", privacy="Datenschutz",
         idx_title="Werkzeuge – nordabenteuer.de",
-        idx_desc="Fünf kostenlose Werkzeuge für den Umzug nach Schweden und den Hauskauf dort: Inserat auf Deutsch, Kaufnebenkosten, Fragen an den Mäklare, Behörden-Reihenfolge, Fixkosten Göteborg. Alles rechnet im Browser.",
+        idx_desc="Sechs kostenlose Werkzeuge für den Umzug nach Schweden und den Hauskauf dort: Inserat auf Deutsch, Kaufnebenkosten, Hauspreise je Kommune, Fragen an den Mäklare, Behörden-Reihenfolge, Fixkosten Göteborg. Alles rechnet im Browser.",
         idx_h1="Werkzeuge für Schweden, auf Deutsch.",
         idx_lede="Kleine Rechner und Listen für die Momente, in denen ein Artikel nicht reicht: wenn ein Inserat vor dir liegt, ein Gebot ansteht oder die Behördenkette anfängt. Kostenlos, ohne Anmeldung, ohne dass etwas deinen Browser verlässt.",
         idx_how="Wie diese Seiten arbeiten",
@@ -122,7 +132,7 @@ T = {  # Texte für Kopf, Fuß, Übersicht — je Sprache
         foot_legal="All tools calculate in your browser. Nothing is stored, uploaded or fetched from other websites. Not legal or tax advice.",
         imprint="Legal notice", privacy="Privacy",
         idx_title="Tools for moving to Sweden – nordabenteuer.de",
-        idx_desc="Five free tools for moving to Sweden and buying a home there: read a Swedish listing, buying costs, questions for the estate agent, the order of Swedish authorities, fixed costs in Gothenburg. Everything runs in your browser.",
+        idx_desc="Six free tools for moving to Sweden and buying a home there: read a Swedish listing, buying costs, house prices by municipality, questions for the estate agent, the order of Swedish authorities, fixed costs in Gothenburg. Everything runs in your browser.",
         idx_h1="Tools for Sweden, in English.",
         idx_lede="Small calculators and checklists for the moments when an article isn’t enough: when a listing is in front of you, a bid is coming up, or the paperwork begins. Free, no sign-up, and nothing leaves your browser.",
         idx_how="How these pages work",
@@ -260,6 +270,8 @@ def build_tool(tool, lang):
         "author": {"@type": "Person", "name": "Sebastian Schiefner"},
     }
     extra = '<script type="application/ld+json">' + json.dumps(jsonld, ensure_ascii=False) + "</script>"
+    if tool.get("data"):  # zusaetzliche Datendatei, nur fuer dieses Werkzeug
+        extra += '<script src="/assets/' + tool['data'] + '?v=' + KOMMUNV + '"></script>'
     html = (head(lang, title, x["desc"], path, alternates, extra)
             + header(lang, alternates[other])
             + "\n<main>\n" + body + "\n</main>\n"

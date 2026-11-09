@@ -31,7 +31,7 @@ Neues Werkzeug: Datei nach `src/` legen (gleicher Aufbau wie die anderen: erste
 Zeile `<title>`, zweite `<meta>`, dritte Fonts-Link, dann `<style>`, Markup,
 `<script>`), Eintrag in `TOOLS` in `build.py`, bauen.
 
-## Die fünf Werkzeuge
+## Die sechs Werkzeuge
 
 | Adresse | Datei | Hängt an |
 |---|---|---|
@@ -40,6 +40,7 @@ Zeile `<title>`, zweite `<meta>`, dritte Fonts-Link, dann `<style>`, Markup,
 | `/fragen-an-den-maeklare/` | `fragen-an-den-maeklare.html` | Objektcheck 149 € |
 | `/behoerden-reihenfolge/` | `behoerden-reihenfolge.html` | Erstgespräch, 50 €/h |
 | `/fixkosten-goeteborg/` | `fixkosten-goeteborg.html` | Erstgespräch |
+| `/hauspreise-kommunen/` | `hauspreise-kommunen.html` | Objektcheck 149 € |
 
 ## Wartung — die Zahlen
 
@@ -56,9 +57,46 @@ Alle veränderlichen Werte stehen je Datei in **einem** Objekt oben im `<script>
 | Läkemedel-Högkostnadsskydd 3.800 | fixkosten | 1177/TLV, seit Juli 2026 | jährlich |
 | EUR/SEK 11,12 | fixkosten | nur Größenordnung | gelegentlich |
 | Besiktning 9.600–10.800 kr | fragen-an-den-maeklare (Hinweistext) | Anticimex | jährlich |
+| Hauspreise aller 290 Kommunen, Jahre 2025 und 2020 | `assets/kommunpreise.js` (generiert) | SCB, BO0501B / FastprisSHRegionAr | **Juni jeden Jahres**, siehe unten |
+| EUR/SEK 11,026 in der Hauspreis-Seite | `hauspreise-kommunen.html` und `en/house-prices-municipalities.html`, Konstante `KURS` | EZB-Referenzkurs 06.11.2026 | Besucher kann ihn überschreiben; grob halten |
 
 Besser wäre, die Werkzeuge aus `tools/guides/facts.py` zu speisen — nicht
 gebaut, nur vorgeschlagen.
+
+## Hauspreise aktualisieren (einmal im Jahr, ab Juni)
+
+`assets/kommunpreise.js` ist **generiert** — nicht von Hand ändern. Die Datei ist
+die einzige Stelle mit den Kommunalzahlen und wird nur von der Hauspreis-Seite
+geladen (über `data="kommunpreise.js"` im `TOOLS`-Eintrag, siehe `build.py`).
+
+Quelle ist die SCB-Tabelle **BO0501B / FastprisSHRegionAr** „Försålda småhus efter
+region (kommun, län, riket) och fastighetstyp“. SCB aktualisiert die Jahreswerte
+**Anfang Juni** (zuletzt 05.06.2026). Im Juni 2027 kommt also das Jahr 2026 dazu.
+
+`api.scb.se` ist aus dem Cloud-Container und aus dem Mac-Shell-Zugang **nicht**
+erreichbar (Egress-Sperre). Der Weg, der funktioniert hat: die API im Browser
+öffnen und dort per JavaScript abfragen — POST auf
+
+    https://api.scb.se/OV0104/v1/doris/sv/ssd/START/BO/BO0501/BO0501B/FastprisSHRegionAr
+
+mit Region `*`, Fastighetstyp `220` (permanentbostad ohne Tomträtt) und `221`
+(fritidshus), ContentsCode `BO0501C1` (Antal) und `BO0501C2` (Köpeskilling,
+Mittelwert in tkr), Tid = das neue Jahr und das Jahr fünf Jahre davor.
+Ergebnis als `kod;namn;n;p;p0;fn;fp` in eine Datei legen, dann:
+
+    python3 tools_scb_kommunpreise.py <csv-datei> assets/kommunpreise.js
+
+Das Skript liegt im Repo und prüft selbst, dass 290 Kommunen, 21 Län und Riket
+da sind.
+
+Danach `jahr`, `vorjahr`, `stand` und `quelle.naechstesUpdate` in der erzeugten
+Datei kontrollieren, `python3 build.py`, und die Seite einmal öffnen: 290 Zeilen,
+Riket-Summe plausibel, keine Konsolenfehler.
+
+**Beim Ändern nicht wegkürzen:** Die Spalte „Verkäufe“ bleibt auf schmalen
+Schirmen sichtbar, die Spalte „Seit …“ weicht dafür. Grund: Ein Mittelwert aus
+einem einzigen Verkauf (Sundbyberg, Ferienhaus, 13,75 Mio. kr) steht sonst ohne
+Gegengewicht da, und die Ehrlichkeit dieser Zahl ist der ganze Zweck der Seite.
 
 ## Zwei Entwurfsentscheidungen
 
